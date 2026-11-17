@@ -62,7 +62,7 @@ nav button {
   cursor:pointer;
   padding:8px 0;
 }
-nav button:hover, nav button.active { color:#a76e78; }
+nav button:hover,nav button.active { color:#a76e78; }
 nav .basket-nav {
   background:var(--pink);
   padding:8px 13px;
@@ -239,19 +239,26 @@ p { color:var(--muted); }
   text-align:center;
   font-weight:bold;
 }
-.price-request {
-  background:var(--yellow);
-  padding:22px;
-  border-radius:7px;
+.custom-divider {
   text-align:center;
+  margin:30px 0;
+  color:#a18c83;
+  font-size:13px;
+  font-weight:bold;
+  letter-spacing:2px;
+}
+.own-ideas {
+  background:#fff9f1;
+  border:1px solid var(--border);
+  border-radius:8px;
+  padding:22px;
   margin-top:25px;
 }
-.price-request strong {
-  display:block;
-  font-size:21px;
+.own-ideas h2 {
+  margin-top:0;
+  font-size:24px;
 }
-.price-request p { color:#675e4b; font-size:14px; margin-bottom:0; }
-.custom-actions { text-align:center; margin-top:22px; }
+.own-ideas p { font-size:14px; }
 .form-group { margin:20px 0; }
 .form-group label {
   display:block;
@@ -268,7 +275,32 @@ p { color:var(--muted); }
   font:inherit;
   color:var(--ink);
 }
-.form-group textarea { min-height:100px; resize:vertical; }
+.form-group textarea {
+  min-height:125px;
+  resize:vertical;
+}
+.field-hint {
+  font-size:12px;
+  color:var(--muted);
+  margin-top:7px;
+}
+.price-request {
+  background:var(--yellow);
+  padding:22px;
+  border-radius:7px;
+  text-align:center;
+  margin-top:25px;
+}
+.price-request strong {
+  display:block;
+  font-size:21px;
+}
+.price-request p {
+  color:#675e4b;
+  font-size:14px;
+  margin-bottom:0;
+}
+.custom-actions { text-align:center; margin-top:22px; }
 .basket-line {
   display:flex;
   justify-content:space-between;
@@ -366,6 +398,7 @@ footer {
   margin-top:40px;
 }
 footer a { color:var(--ink); }
+
 @media(max-width:700px) {
   .header-inner { flex-direction:column; padding:12px; gap:9px; }
   nav { justify-content:center; gap:12px; }
@@ -399,7 +432,7 @@ footer a { color:var(--ink); }
   </div>
 </header>
 
-<!-- HOME -->
+<!-- HOME PAGE -->
 <main id="home" class="page active">
   <section class="hero">
     <div class="eyebrow">Thoughtful little packs for students</div>
@@ -418,7 +451,7 @@ footer a { color:var(--ink); }
   </section>
 </main>
 
-<!-- COLLECTION -->
+<!-- OUR COLLECTION PAGE -->
 <main id="collection" class="page">
   <section class="page-heading">
     <div class="eyebrow">Find your favourite</div>
@@ -462,7 +495,7 @@ footer a { color:var(--ink); }
         <div class="product-art art-lilac">Your Pack, Your Way</div>
         <div class="product-info">
           <h2>Make Your Own Custom Pack</h2>
-          <p>Choose your own items and create a pack that's just right for you.</p>
+          <p>Choose your own items or tell us exactly what you'd like.</p>
           <div class="price">Price on request</div>
           <button class="button" onclick="showPage('custom')">Create your pack</button>
         </div>
@@ -472,7 +505,7 @@ footer a { color:var(--ink); }
     <section class="custom-banner">
       <div class="eyebrow">A little extra</div>
       <h2>Make it your own</h2>
-      <p>Choose your favourite items and we'll put together a custom pack just for you.</p>
+      <p>Choose your favourite items or tell us your own ideas. We'll put together a custom pack just for you.</p>
       <button class="button" onclick="showPage('custom')">Build a custom pack</button>
     </section>
 
@@ -518,20 +551,21 @@ footer a { color:var(--ink); }
   </div>
 </main>
 
-<!-- CUSTOM PACK -->
+<!-- CUSTOM PACK PAGE -->
 <main id="custom" class="page">
   <section class="page-heading">
     <div class="eyebrow">Made just for you</div>
     <h1>Create Your Own Pack</h1>
-    <p>Choose the items you'd like, and tell us anything else you'd love in your pack.</p>
+    <p>Choose from our items or tell us exactly what you'd like in your pack.</p>
   </section>
 
   <div class="container">
     <section class="custom-layout">
-      <h2>Choose your items</h2>
-      <p>Select the quantities you'd like in your pack.</p>
+      <h2>Choose from our items</h2>
+      <p>Select the quantities you'd like. You don't have to choose anything here if you'd rather write your own ideas below.</p>
 
       <div id="custom-options">
+
         <div class="custom-item">
           <div><strong>Hand sanitiser</strong><small>€1.00 each</small></div>
           <div class="quantity-control">
@@ -540,14 +574,16 @@ footer a { color:var(--ink); }
             <button type="button" onclick="changeCustom('sanitiser',1)">+</button>
           </div>
         </div>
+
         <div class="custom-item">
           <div><strong>Hair ties</strong><small>€0.50 each</small></div>
           <div class="quantity-control">
             <button type="button" onclick="changeCustom('hairties',-1)">−</button>
-            <span id="qty-hairt ies">0</span>
+            <span id="qty-hairties">0</span>
             <button type="button" onclick="changeCustom('hairties',1)">+</button>
           </div>
         </div>
+
         <div class="custom-item">
           <div><strong>Capri Sun</strong><small>€1.00 each</small></div>
           <div class="quantity-control">
@@ -556,6 +592,7 @@ footer a { color:var(--ink); }
             <button type="button" onclick="changeCustom('caprisun',1)">+</button>
           </div>
         </div>
+
         <div class="custom-item">
           <div><strong>Mini sweet packet</strong><small>€0.50 each</small></div>
           <div class="quantity-control">
@@ -564,6 +601,7 @@ footer a { color:var(--ink); }
             <button type="button" onclick="changeCustom('minisweets',1)">+</button>
           </div>
         </div>
+
         <div class="custom-item">
           <div><strong>Small chocolate</strong><small>€0.50 each</small></div>
           <div class="quantity-control">
@@ -572,6 +610,7 @@ footer a { color:var(--ink); }
             <button type="button" onclick="changeCustom('smallchoc',1)">+</button>
           </div>
         </div>
+
         <div class="custom-item">
           <div><strong>Pens</strong><small>€0.50 each</small></div>
           <div class="quantity-control">
@@ -580,6 +619,7 @@ footer a { color:var(--ink); }
             <button type="button" onclick="changeCustom('pens',1)">+</button>
           </div>
         </div>
+
         <div class="custom-item">
           <div><strong>Notepad</strong><small>€1.00 each</small></div>
           <div class="quantity-control">
@@ -588,32 +628,42 @@ footer a { color:var(--ink); }
             <button type="button" onclick="changeCustom('notepad',1)">+</button>
           </div>
         </div>
+
       </div>
 
-      <!-- NEW WRITTEN REQUEST BOX -->
-      <div class="form-group">
-        <label for="custom-request">Anything else you'd like in your pack?</label>
-        <textarea id="custom-request" rows="5"
-          placeholder="Write any other items, colours, treats or special requests you'd like us to know about..."></textarea>
-        <small style="color:#827873">
-          We'll do our best to include your requests, depending on availability.
-        </small>
-      </div>
+      <!-- CUSTOM TEXT BOX -->
+      <div class="custom-divider">OR</div>
+
+      <section class="own-ideas">
+        <h2>Can't find what you're looking for?</h2>
+        <p>Tell us what you'd like in your pack! You can use this box instead of choosing from the list, or use both.</p>
+
+        <div class="form-group">
+          <label for="custom-request">What would you like in your pack?</label>
+          <textarea
+            id="custom-request"
+            placeholder="For example: I'd like pink stationery, lip balm, a blue pen and some extra sweets..."
+          ></textarea>
+          <div class="field-hint">
+            Write down any items, colours, treats or special ideas you'd love us to include.
+          </div>
+        </div>
+      </section>
 
       <div class="price-request">
         <strong>Price on request</strong>
-        <p>We'll review your selections, check availability and contact you with the final price before confirming your order.</p>
+        <p>We'll review your choices and written ideas, check availability and contact you with the final price before confirming your order.</p>
       </div>
 
       <div class="custom-actions">
         <button class="button" onclick="addCustomPack()">Add custom pack to my basket</button>
-        <p style="font-size:12px">Your custom pack price will be confirmed before your order is accepted.</p>
+        <p style="font-size:12px">You can choose listed items, write your own ideas, or do both!</p>
       </div>
     </section>
   </div>
 </main>
 
-<!-- BASKET -->
+<!-- BASKET PAGE -->
 <main id="basket" class="page">
   <section class="page-heading">
     <div class="eyebrow">Your chosen goodies</div>
@@ -625,7 +675,7 @@ footer a { color:var(--ink); }
   </div>
 </main>
 
-<!-- CHECKOUT -->
+<!-- CHECKOUT PAGE -->
 <main id="checkout" class="page">
   <section class="page-heading">
     <div class="eyebrow">Nearly there</div>
@@ -656,6 +706,7 @@ footer a { color:var(--ink); }
           <label for="other-meetup">Where would you prefer to meet?</label>
           <input id="other-meetup" type="text" placeholder="Please tell us where">
         </div>
+
         <label class="check-row">
           <input type="checkbox" id="gift">
           <span>This order is a gift.</span>
@@ -664,23 +715,27 @@ footer a { color:var(--ink); }
           <label for="gift-message">Gift message (optional)</label>
           <textarea id="gift-message" placeholder="Write a little message..."></textarea>
         </div>
+
         <label class="check-row">
           <input type="checkbox" id="offers">
           <span>I'd like to hear about new packs and offers.</span>
         </label>
+
         <div class="checkout-summary" id="checkout-summary"></div>
+
         <p style="font-size:13px">
           When you submit, an email will open with your order details.
           Please press Send in your email app. Your order is only confirmed
           once we've replied to you.
         </p>
+
         <button class="button" type="submit" style="width:100%">Send my order</button>
       </form>
     </section>
   </div>
 </main>
 
-<!-- ABOUT -->
+<!-- ABOUT US PAGE -->
 <main id="about" class="page">
   <section class="page-heading">
     <div class="eyebrow">A little about us</div>
@@ -743,11 +798,11 @@ let customQuantities = {};
 let toastTimer;
 
 function money(amount) {
-  return "€" + Number(amount).toFixed(2);
+  return "€"+Number(amount).toFixed(2);
 }
 
 function escapeHTML(value) {
-  return String(value).replace(/[&<>"']/g, character => ({
+  return String(value).replace(/[&<>"']/g,character => ({
     "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"
   })[character]);
 }
@@ -756,7 +811,7 @@ function loadBasket() {
   try {
     const saved = localStorage.getItem("packShackBasket");
     basket = saved ? JSON.parse(saved) : [];
-    if (!Array.isArray(basket)) basket = [];
+    if(!Array.isArray(basket)) basket = [];
   } catch(error) {
     basket = [];
   }
@@ -768,13 +823,13 @@ function saveBasket() {
 }
 
 function updateBasketCount() {
-  const count = basket.reduce((total,item) => total + item.quantity,0);
+  const count = basket.reduce((total,item) => total+item.quantity,0);
   document.getElementById("basket-count").textContent = count;
 }
 
 function showPage(page) {
   const valid = ["home","collection","custom","basket","checkout","about"];
-  if (!valid.includes(page)) page = "home";
+  if(!valid.includes(page)) page = "home";
 
   document.querySelectorAll(".page").forEach(section => {
     section.classList.remove("active");
@@ -783,15 +838,35 @@ function showPage(page) {
   document.getElementById(page).classList.add("active");
 
   document.querySelectorAll("nav button").forEach(button => {
-    button.classList.toggle("active",button.dataset.page === page);
+    button.classList.toggle("active",button.dataset.page===page);
   });
 
-  if(page === "basket") renderBasket();
-  if(page === "checkout") renderCheckoutSummary();
+  if(page==="basket") renderBasket();
+  if(page==="checkout") renderCheckoutSummary();
 
   hideToast();
   window.scrollTo(0,0);
   history.pushState(null,"","#"+page);
+}
+
+function showPageWithoutHistory(page) {
+  const valid = ["home","collection","custom","basket","checkout","about"];
+  if(!valid.includes(page)) page = "home";
+
+  document.querySelectorAll(".page").forEach(section => {
+    section.classList.remove("active");
+  });
+  document.getElementById(page).classList.add("active");
+
+  document.querySelectorAll("nav button").forEach(button => {
+    button.classList.toggle("active",button.dataset.page===page);
+  });
+
+  if(page==="basket") renderBasket();
+  if(page==="checkout") renderCheckoutSummary();
+
+  hideToast();
+  window.scrollTo(0,0);
 }
 
 window.addEventListener("popstate",() => {
@@ -799,32 +874,12 @@ window.addEventListener("popstate",() => {
   showPageWithoutHistory(page);
 });
 
-function showPageWithoutHistory(page) {
-  const valid = ["home","collection","custom","basket","checkout","about"];
-  if (!valid.includes(page)) page = "home";
-
-  document.querySelectorAll(".page").forEach(section => {
-    section.classList.remove("active");
-  });
-  document.getElementById(page).classList.add("active");
-
-  document.querySelectorAll("nav button").forEach(button => {
-    button.classList.toggle("active",button.dataset.page === page);
-  });
-
-  if(page === "basket") renderBasket();
-  if(page === "checkout") renderCheckoutSummary();
-
-  hideToast();
-  window.scrollTo(0,0);
-}
-
 function addToBasket(item) {
   const existing = basket.find(entry =>
-    entry.id === item.id && entry.details === item.details
+    entry.id===item.id && entry.details===item.details
   );
 
-  if(existing) existing.quantity += 1;
+  if(existing) existing.quantity+=1;
   else basket.push({...item,quantity:1});
 
   saveBasket();
@@ -852,31 +907,33 @@ function addExtra(id) {
 }
 
 function changeCustom(id,change) {
-  customQuantities[id] = Math.max(0,(customQuantities[id] || 0)+change);
-  const display = document.getElementById("qty-"+id);
-  if(display) display.textContent = customQuantities[id];
+  customQuantities[id]=Math.max(0,(customQuantities[id]||0)+change);
+  const display=document.getElementById("qty-"+id);
+  if(display) display.textContent=customQuantities[id];
 }
 
-/* CUSTOM PACK: SAVES SELECTED ITEMS AND WRITTEN REQUEST */
+/* CUSTOM PACK: CUSTOMER CAN CHOOSE ITEMS, WRITE IDEAS, OR BOTH */
 function addCustomPack() {
-  const selected = Object.keys(customItems).filter(id =>
-    (customQuantities[id] || 0) > 0
+  const selected=Object.keys(customItems).filter(id =>
+    (customQuantities[id]||0)>0
   );
 
-  const requestBox = document.getElementById("custom-request");
-  const specialRequest = requestBox.value.trim();
+  const specialRequest=document.getElementById("custom-request").value.trim();
 
-  if(selected.length === 0 && !specialRequest) {
-    alert("Please choose an item or write what you'd like in your pack.");
+  /* Only stop the customer if they have chosen nothing AND written nothing */
+  if(selected.length===0 && specialRequest==="") {
+    alert("Please choose an item or write what you'd like in your custom pack.");
     return;
   }
 
-  const details = selected.map(id =>
-    customQuantities[id]+" x "+customItems[id].name
-  );
+  const details=[];
 
-  if(specialRequest) {
-    details.push("Special request: "+specialRequest);
+  selected.forEach(id => {
+    details.push(customQuantities[id]+" x "+customItems[id].name);
+  });
+
+  if(specialRequest!=="") {
+    details.push("CUSTOM CUSTOMER REQUEST: "+specialRequest);
   }
 
   addToBasket({
@@ -887,22 +944,23 @@ function addCustomPack() {
     type:"custom"
   });
 
-  customQuantities = {};
+  /* Reset the quantities and text box after adding */
+  customQuantities={};
 
   Object.keys(customItems).forEach(id => {
-    const display = document.getElementById("qty-"+id);
-    if(display) display.textContent = "0";
+    const display=document.getElementById("qty-"+id);
+    if(display) display.textContent="0";
   });
 
-  requestBox.value = "";
+  document.getElementById("custom-request").value="";
 }
 
 function showToast(message) {
-  const toast = document.getElementById("toast");
-  document.getElementById("toast-message").textContent = message;
+  const toast=document.getElementById("toast");
+  document.getElementById("toast-message").textContent=message;
   toast.classList.add("show");
   clearTimeout(toastTimer);
-  toastTimer = setTimeout(hideToast,4000);
+  toastTimer=setTimeout(hideToast,4000);
 }
 
 function hideToast() {
@@ -910,10 +968,10 @@ function hideToast() {
 }
 
 function renderBasket() {
-  const holder = document.getElementById("basket-content");
+  const holder=document.getElementById("basket-content");
 
-  if(basket.length === 0) {
-    holder.innerHTML = `
+  if(basket.length===0) {
+    holder.innerHTML=`
       <div class="empty-basket">
         <h2>Your basket is empty</h2>
         <p>Have a look at our collection and find something you like.</p>
@@ -922,20 +980,20 @@ function renderBasket() {
     return;
   }
 
-  let total = 0;
-  let hasCustom = false;
+  let total=0;
+  let hasCustom=false;
 
-  const rows = basket.map((item,index) => {
-    const custom = item.type === "custom";
-    if(custom) hasCustom = true;
-    else total += item.price * item.quantity;
+  const rows=basket.map((item,index) => {
+    const custom=item.type==="custom";
+    if(custom) hasCustom=true;
+    else total+=item.price*item.quantity;
 
     return `
       <div class="basket-line">
         <div style="flex:1">
           <h3>${escapeHTML(item.name)}</h3>
-          <p>${escapeHTML(item.details || "")}</p>
-          <p>${custom ? "Price on request" : money(item.price)+" each"}</p>
+          <p>${escapeHTML(item.details||"")}</p>
+          <p>${custom?"Price on request":money(item.price)+" each"}</p>
           <div class="quantity-control">
             <button onclick="changeBasketQuantity(${index},-1)">−</button>
             <span>${item.quantity}</span>
@@ -944,18 +1002,18 @@ function renderBasket() {
           <button class="remove-button" onclick="removeBasketItem(${index})">Remove</button>
         </div>
         <div class="line-price">
-          ${custom ? "Price to be confirmed" : money(item.price*item.quantity)}
+          ${custom?"Price to be confirmed":money(item.price*item.quantity)}
         </div>
       </div>`;
   }).join("");
 
-  holder.innerHTML = `
+  holder.innerHTML=`
     ${rows}
     <div class="basket-total">
-      <span>${hasCustom ? "Ready-made items total" : "Total"}</span>
+      <span>${hasCustom?"Ready-made items total":"Total"}</span>
       <span>${money(total)}</span>
     </div>
-    ${hasCustom ? `<p class="basket-note">Custom pack prices are not included in this total. We'll check your selections and contact you with the final price before confirming your order.</p>` : ""}
+    ${hasCustom?`<p class="basket-note">Custom pack prices are not included in this total. We'll check your selections and written requests, then contact you with the final price before confirming your order.</p>`:""}
     <div class="button-row" style="justify-content:space-between">
       <button class="button secondary" onclick="showPage('collection')">Continue shopping</button>
       <button class="button" onclick="showPage('checkout')">Continue to checkout</button>
@@ -964,8 +1022,8 @@ function renderBasket() {
 
 function changeBasketQuantity(index,change) {
   if(!basket[index]) return;
-  basket[index].quantity += change;
-  if(basket[index].quantity <= 0) basket.splice(index,1);
+  basket[index].quantity+=change;
+  if(basket[index].quantity<=0) basket.splice(index,1);
   saveBasket();
   renderBasket();
 }
@@ -977,37 +1035,38 @@ function removeBasketItem(index) {
 }
 
 function renderCheckoutSummary() {
-  const holder = document.getElementById("checkout-summary");
+  const holder=document.getElementById("checkout-summary");
 
-  if(basket.length === 0) {
-    holder.innerHTML = "<p>Your basket is empty. Please add something before checking out.</p>";
+  if(basket.length===0) {
+    holder.innerHTML="<p>Your basket is empty. Please add something before checking out.</p>";
     return;
   }
 
-  let total = 0;
-  let hasCustom = false;
+  let total=0;
+  let hasCustom=false;
 
-  const lines = basket.map(item => {
-    if(item.type === "custom") {
-      hasCustom = true;
+  const lines=basket.map(item => {
+    if(item.type==="custom") {
+      hasCustom=true;
       return `<p>${item.quantity} x ${escapeHTML(item.name)} — Price on request</p><p>${escapeHTML(item.details)}</p>`;
     }
-    total += item.price*item.quantity;
+
+    total+=item.price*item.quantity;
     return `<p>${item.quantity} x ${escapeHTML(item.name)} — ${money(item.price*item.quantity)}</p>`;
   }).join("");
 
-  holder.innerHTML = `
+  holder.innerHTML=`
     <h3>Your order</h3>
     ${lines}
     <hr>
     <p><strong>Ready-made items total: ${money(total)}</strong></p>
-    ${hasCustom ? "<p>Custom pack price: To be confirmed after review.</p>" : ""}`;
+    ${hasCustom?"<p>Custom pack price: To be confirmed after review.</p>":""}`;
 }
 
 document.getElementById("meetup").addEventListener("change",function() {
-  const isOther = this.value === "Other";
+  const isOther=this.value==="Other";
   document.getElementById("other-meetup-group").classList.toggle("hidden",!isOther);
-  document.getElementById("other-meetup").required = isOther;
+  document.getElementById("other-meetup").required=isOther;
 });
 
 document.getElementById("gift").addEventListener("change",function() {
@@ -1017,40 +1076,41 @@ document.getElementById("gift").addEventListener("change",function() {
 document.getElementById("checkout-form").addEventListener("submit",function(event) {
   event.preventDefault();
 
-  if(basket.length === 0) {
+  if(basket.length===0) {
     alert("Your basket is empty. Please add something before checking out.");
     showPage("collection");
     return;
   }
 
-  const name = document.getElementById("customer-name").value.trim();
-  const email = document.getElementById("customer-email").value.trim();
-  const meetupChoice = document.getElementById("meetup").value;
-  const otherMeetup = document.getElementById("other-meetup").value.trim();
+  const name=document.getElementById("customer-name").value.trim();
+  const email=document.getElementById("customer-email").value.trim();
+  const meetupChoice=document.getElementById("meetup").value;
+  const otherMeetup=document.getElementById("other-meetup").value.trim();
 
-  if(meetupChoice === "Other" && !otherMeetup) {
+  if(meetupChoice==="Other" && !otherMeetup) {
     alert("Please tell us where you would prefer to meet.");
     return;
   }
 
-  const meetup = meetupChoice === "Other" ? "Other: "+otherMeetup : meetupChoice;
-  const gift = document.getElementById("gift").checked;
-  const giftMessage = document.getElementById("gift-message").value.trim();
-  const offers = document.getElementById("offers").checked;
+  const meetup=meetupChoice==="Other"?"Other: "+otherMeetup:meetupChoice;
+  const gift=document.getElementById("gift").checked;
+  const giftMessage=document.getElementById("gift-message").value.trim();
+  const offers=document.getElementById("offers").checked;
 
-  let total = 0;
-  let hasCustom = false;
+  let total=0;
+  let hasCustom=false;
 
-  const orderLines = basket.map(item => {
-    if(item.type === "custom") {
-      hasCustom = true;
-      return `${item.quantity} x ${item.name}\nSelected items and requests: ${item.details}\nPrice: To be confirmed after review`;
+  const orderLines=basket.map(item => {
+    if(item.type==="custom") {
+      hasCustom=true;
+      return `${item.quantity} x ${item.name}\n${item.details}\nPrice: To be confirmed after review`;
     }
-    total += item.price*item.quantity;
+
+    total+=item.price*item.quantity;
     return `${item.quantity} x ${item.name} - ${money(item.price*item.quantity)}`;
   });
 
-  const body = [
+  const body=[
     "Hello The Pack Shack,",
     "",
     "I'd like to place an order.",
@@ -1064,30 +1124,31 @@ document.getElementById("checkout-form").addEventListener("submit",function(even
     ...orderLines,
     "",
     "Ready-made items total: "+money(total),
-    hasCustom ? "Custom pack price: To be confirmed after review." : "",
+    hasCustom?"Custom pack price: To be confirmed after review.":"",
     "",
-    "Gift order: "+(gift ? "Yes" : "No"),
-    gift && giftMessage ? "Gift message: "+giftMessage : "",
-    "Interested in new packs and offers: "+(offers ? "Yes" : "No"),
+    "Gift order: "+(gift?"Yes":"No"),
+    gift&&giftMessage?"Gift message: "+giftMessage:"",
+    "Interested in new packs and offers: "+(offers?"Yes":"No"),
     "",
     "I understand that my order is only confirmed once The Pack Shack replies.",
     "",
     "Thank you!"
   ].filter(Boolean).join("\n");
 
-  const subject = encodeURIComponent("The Pack Shack Order - "+name);
-  const emailBody = encodeURIComponent(body);
+  const subject=encodeURIComponent("The Pack Shack Order - "+name);
+  const emailBody=encodeURIComponent(body);
 
-  window.location.href =
+  window.location.href=
     "mailto:PackShack00@outlook.com?subject="+subject+"&body="+emailBody;
 
   alert("Your email app should open with your order details. Please press Send. Your order is confirmed once we reply.");
 });
 
+/* START WEBSITE */
 loadBasket();
 updateBasketCount();
 
-const initialPage = window.location.hash.replace("#","");
+const initialPage=window.location.hash.replace("#","");
 
 if(["home","collection","custom","basket","checkout","about"].includes(initialPage)) {
   showPageWithoutHistory(initialPage);
