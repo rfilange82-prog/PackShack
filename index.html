@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -442,6 +443,50 @@ footer {
 }
 footer a { color:var(--ink); }
 
+/* SUGGEST A PACK BOX */
+.suggestion-box {
+  position:fixed;
+  right:15px;
+  top:45%;
+  width:220px;
+  background:#fffaf3;
+  border:2px solid #d8b98c;
+  border-radius:14px;
+  padding:15px;
+  z-index:999;
+  box-shadow:0 4px 12px rgba(0,0,0,0.15);
+}
+.suggestion-box h3 {
+  margin:0 0 8px;
+  color:#426344;
+  font-size:17px;
+}
+.suggestion-box p {
+  font-size:12px;
+  margin-bottom:10px;
+}
+.suggestion-box textarea {
+  width:100%;
+  height:75px;
+  padding:8px;
+  border:1px solid #d8b98c;
+  border-radius:7px;
+  resize:vertical;
+  box-sizing:border-box;
+  font:inherit;
+}
+.suggestion-box button {
+  width:100%;
+  margin-top:8px;
+  padding:9px;
+  background:#426344;
+  color:white;
+  border:none;
+  border-radius:7px;
+  cursor:pointer;
+}
+.suggestion-box button:hover { background:#304d32; }
+
 @media(max-width:700px) {
   .header-inner { flex-direction:column; padding:12px; gap:9px; }
   nav { justify-content:center; gap:12px; }
@@ -451,66 +496,18 @@ footer a { color:var(--ink); }
   .hero { padding:65px 18px; }
   .custom-layout,.panel { padding:17px; }
   .recommendation-grid { grid-template-columns:1fr; }
-  .The Christmas Special img { height:100px; }
+  .christmas-gallery img { height:100px; }
+  .suggestion-box {
+    width:165px;
+    right:8px;
+    top:auto;
+    bottom:12px;
+    padding:10px;
+  }
 }
 @media(max-width:420px) {
   .extras-grid { grid-template-columns:1fr; }
   .custom-item,.basket-line { align-items:flex-start; }
-}
-  /* SUGGEST A PACK BOX */
-.suggestion-box {
-  position: fixed;
-  right: 15px;
-  top: 45%;
-  width: 220px;
-  background: #fffaf3;
-  border: 2px solid #d8b98c;
-  border-radius: 14px;
-  padding: 15px;
-  z-index: 999;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-}
-
-.suggestion-box h3 {
-  margin: 0 0 8px;
-  color: #426344;
-  font-size: 17px;
-}
-
-.suggestion-box p {
-  font-size: 12px;
-  margin-bottom: 10px;
-}
-
-.suggestion-box textarea {
-  width: 100%;
-  height: 75px;
-  padding: 8px;
-  border: 1px solid #d8b98c;
-  border-radius: 7px;
-  resize: vertical;
-  box-sizing: border-box;
-}
-
-.suggestion-box button {
-  width: 100%;
-  margin-top: 8px;
-  padding: 9px;
-  background: #426344;
-  color: white;
-  border: none;
-  border-radius: 7px;
-  cursor: pointer;
-}
-
-@media(max-width:700px) {
-  .suggestion-box {
-    width: 165px;
-    right: 8px;
-    top: auto;
-    bottom: 12px;
-    padding: 10px;
-  }
 }
 </style>
 </head>
@@ -561,7 +558,6 @@ footer a { color:var(--ink); }
 
   <div class="container">
     <div class="product-grid">
-
       <article class="product-card">
         <div class="product-art art-pink">Grandma's Sugar Bag</div>
         <div class="product-info">
@@ -595,9 +591,9 @@ footer a { color:var(--ink); }
       <!-- CHRISTMAS SPECIAL -->
       <article class="product-card">
         <div class="christmas-gallery">
-<img src="IMG-20261119-WA0017.jpg" alt="The Christmas Special gold gift box">
-<img src="IMG-20261119-WA0012.jpg" alt="The Christmas Special box filled with treats">
-<img src="IMG-20261119-WA0008.jpg" alt="Christmas Special treats and gift box">
+          <img src="IMG-20261119-WA0017.jpg" alt="The Christmas Special gold gift box">
+          <img src="IMG-20261119-WA0012.jpg" alt="The Christmas Special box filled with treats">
+          <img src="IMG-20261119-WA0008.jpg" alt="Christmas Special treats and gift box">
         </div>
         <div class="product-info">
           <span class="seasonal-label" id="christmas-status">Available 20 November – 30 December 2026</span>
@@ -617,7 +613,6 @@ footer a { color:var(--ink); }
           <button class="button" onclick="showPage('custom')">Create your pack</button>
         </div>
       </article>
-
     </div>
 
     <section class="custom-banner">
@@ -871,6 +866,14 @@ footer a { color:var(--ink); }
   <p><a href="mailto:PackShack00@outlook.com">PackShack00@outlook.com</a></p>
 </footer>
 
+<!-- SUGGEST A PACK BOX -->
+<div class="suggestion-box">
+  <h3>💡 Suggest a Pack!</h3>
+  <p>Have an idea for a new pack? We'd love to hear it!</p>
+  <textarea id="pack-suggestion" placeholder="Tell us your idea..."></textarea>
+  <button type="button" onclick="sendPackSuggestion()">Send Suggestion ✨</button>
+</div>
+
 <div class="toast" id="toast">
   <span id="toast-message">Added to your basket!</span>
   <button onclick="showPage('basket')">View my basket</button>
@@ -1003,7 +1006,6 @@ function addToBasket(item) {
 }
 
 function isChristmasSpecialAvailable() {
-  // Dates are inclusive and interpreted in the customer's local calendar.
   const today = new Date();
   const current = new Date(today.getFullYear(),today.getMonth(),today.getDate());
   const start = new Date(2026,10,20);
@@ -1073,7 +1075,6 @@ function changeCustom(id,change) {
   if(display) display.textContent=customQuantities[id];
 }
 
-/* CUSTOM PACK: CUSTOMER CAN CHOOSE ITEMS, WRITE IDEAS, OR BOTH */
 function addCustomPack() {
   const selected=Object.keys(customItems).filter(id =>
     (customQuantities[id]||0)>0
@@ -1340,6 +1341,34 @@ document.getElementById("checkout-form").addEventListener("submit",function(even
   alert("Your email app should open with your order details. Please press Send. Your order is confirmed once we reply.");
 });
 
+/* SUGGEST A PACK: OPEN OUTLOOK WITH THE IDEA ALREADY WRITTEN */
+function sendPackSuggestion() {
+  const suggestion = document.getElementById("pack-suggestion").value.trim();
+
+  if(!suggestion) {
+    alert("Please write your pack idea first!");
+    document.getElementById("pack-suggestion").focus();
+    return;
+  }
+
+  const subject = encodeURIComponent("New Pack Suggestion - The Pack Shack");
+
+  const body = encodeURIComponent(
+    "Hello The Pack Shack!\n\n" +
+    "I have an idea for a new pack:\n\n" +
+    suggestion +
+    "\n\nThank you!"
+  );
+
+  const outlookLink =
+    "https://outlook.live.com/mail/0/deeplink/compose" +
+    "?to=PackShack00%40outlook.com" +
+    "&subject=" + subject +
+    "&body=" + body;
+
+  window.open(outlookLink,"_blank");
+}
+
 /* START WEBSITE */
 loadBasket();
 updateBasketCount();
@@ -1353,34 +1382,6 @@ if(["home","collection","custom","basket","checkout","about"].includes(initialPa
   showPageWithoutHistory("home");
 }
 </script>
-<div class="suggestion-box">
-  <h3>💡 Suggest a Pack!</h3>
-  <p>Have an idea for a new pack? We'd love to hear it!</p>
 
-  <textarea id="pack-suggestion"
-    placeholder="Tell us your idea..."></textarea>
-
-  <button onclick="sendPackSuggestion()">
-    Send Suggestion ✨
-  </button>
-</div>
-
-<script>
-function sendPackSuggestion() {
-  const suggestion = document.getElementById('pack-suggestion').value.trim();
-
-  if (!suggestion) {
-    alert('Please write your pack idea first!');
-    return;
-  }
-
-  const subject = encodeURIComponent('New Pack Suggestion');
-  const body = encodeURIComponent(suggestion);
-
-  window.location.href =
-    'mailto:PackShack00@outlook.com?subject=' +
-    subject + '&body=' + body;
-}
-</script>
 </body>
 </html>
