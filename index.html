@@ -414,37 +414,34 @@ p { color:var(--muted); }
   font-size:16px;
 }
 .checkout-summary p { font-size:14px; }
-
-/* Tidy suggestion section inside checkout */
-.suggest-box-section {
-  background:#fff9f1;
+.pack-suggestion {
+  background:#fff8f6;
   border:1px solid var(--border);
   border-radius:8px;
   padding:20px;
   margin:22px 0;
 }
-.suggest-box-section h3 {
-  margin:0 0 6px;
-  font-size:21px;
+.pack-suggestion h3 {
+  font-family:Georgia,serif;
+  font-size:20px;
+  margin:0 0 7px;
 }
-.suggest-box-section p {
+.pack-suggestion p {
   font-size:14px;
-  margin:6px 0 14px;
+  margin:0 0 13px;
 }
-.suggest-box-section textarea {
-  display:block;
+.pack-suggestion textarea {
   width:100%;
-  min-height:95px;
-  padding:12px;
+  min-height:90px;
+  padding:11px;
   border:1px solid var(--border);
   border-radius:5px;
-  background:#fffdfb;
-  color:var(--ink);
-  font:inherit;
+  font:14px Arial,sans-serif;
   resize:vertical;
+  background:white;
+  color:var(--ink);
 }
-.suggest-box-section .button { margin-top:12px; }
-
+.pack-suggestion .button { margin-top:10px; }
 .about-panel p { color:var(--muted); }
 .hidden { display:none !important; }
 .toast {
@@ -676,7 +673,6 @@ footer a { color:var(--ink); }
             <button type="button" onclick="changeCustom('sanitiser',1)">+</button>
           </div>
         </div>
-
         <div class="custom-item">
           <div><strong>Hair ties</strong><small>€0.50 each</small></div>
           <div class="quantity-control">
@@ -685,7 +681,6 @@ footer a { color:var(--ink); }
             <button type="button" onclick="changeCustom('hairties',1)">+</button>
           </div>
         </div>
-
         <div class="custom-item">
           <div><strong>Capri Sun</strong><small>€1.00 each</small></div>
           <div class="quantity-control">
@@ -694,7 +689,6 @@ footer a { color:var(--ink); }
             <button type="button" onclick="changeCustom('caprisun',1)">+</button>
           </div>
         </div>
-
         <div class="custom-item">
           <div><strong>Mini sweet packet</strong><small>€0.50 each</small></div>
           <div class="quantity-control">
@@ -703,7 +697,6 @@ footer a { color:var(--ink); }
             <button type="button" onclick="changeCustom('minisweets',1)">+</button>
           </div>
         </div>
-
         <div class="custom-item">
           <div><strong>Small chocolate</strong><small>€0.50 each</small></div>
           <div class="quantity-control">
@@ -712,7 +705,6 @@ footer a { color:var(--ink); }
             <button type="button" onclick="changeCustom('smallchoc',1)">+</button>
           </div>
         </div>
-
         <div class="custom-item">
           <div><strong>Pens</strong><small>€0.50 each</small></div>
           <div class="quantity-control">
@@ -721,7 +713,6 @@ footer a { color:var(--ink); }
             <button type="button" onclick="changeCustom('pens',1)">+</button>
           </div>
         </div>
-
         <div class="custom-item">
           <div><strong>Notepad</strong><small>€1.00 each</small></div>
           <div class="quantity-control">
@@ -740,9 +731,7 @@ footer a { color:var(--ink); }
         <div class="form-group">
           <label for="custom-request">What would you like in your pack?</label>
           <textarea id="custom-request" placeholder="For example: I'd like pink stationery, lip balm, a blue pen and some extra sweets..."></textarea>
-          <div class="field-hint">
-            Write down any items, colours, treats or special ideas you'd love us to include.
-          </div>
+          <div class="field-hint">Write down any items, colours, treats or special ideas you'd love us to include.</div>
         </div>
       </section>
 
@@ -825,13 +814,11 @@ footer a { color:var(--ink); }
 
         <div class="checkout-summary" id="checkout-summary"></div>
 
-        <!-- THIS IS THE TIDY SUGGESTION BOX -->
-        <section class="suggest-box-section" aria-labelledby="suggest-box-heading">
-          <h3 id="suggest-box-heading">💗 Suggest a Box?</h3>
-          <p>Have an idea for a new Pack Shack box? Tell us what you'd love to see. We would love to hear your ideas!</p>
-          <label class="field-hint" for="pack-suggestion">Your idea</label>
+        <section class="pack-suggestion" aria-labelledby="pack-suggestion-title">
+          <h3 id="pack-suggestion-title">Suggest a Pack</h3>
+          <p>Have an idea for a pack you'd like us to make? Tell us about it below.</p>
           <textarea id="pack-suggestion" placeholder="I'd love a pack with..."></textarea>
-          <button class="button" type="button" onclick="sendPackSuggestion()">Send my suggestion</button>
+          <button class="button secondary" type="button" onclick="sendPackSuggestion()">Send your idea</button>
         </section>
 
         <p style="font-size:13px">
@@ -954,10 +941,7 @@ function showPage(page) {
   });
 
   if(page==="basket") renderBasket();
-  if(page==="checkout") {
-    renderCheckoutRecommendations();
-    renderCheckoutSummary();
-  }
+  if(page==="checkout") { renderCheckoutRecommendations(); renderCheckoutSummary(); }
 
   hideToast();
   window.scrollTo(0,0);
@@ -978,10 +962,7 @@ function showPageWithoutHistory(page) {
   });
 
   if(page==="basket") renderBasket();
-  if(page==="checkout") {
-    renderCheckoutRecommendations();
-    renderCheckoutSummary();
-  }
+  if(page==="checkout") { renderCheckoutRecommendations(); renderCheckoutSummary(); }
 
   hideToast();
   window.scrollTo(0,0);
@@ -1047,11 +1028,8 @@ function addReadyPack(id) {
   }
 
   addToBasket({
-    id:id,
-    name:pack.name,
-    price:pack.price,
-    details:pack.details,
-    type:"ready"
+    id:id,name:pack.name,price:pack.price,
+    details:pack.details,type:"ready"
   });
 }
 
@@ -1060,11 +1038,8 @@ function addExtra(id) {
   if(!extra) return;
 
   addToBasket({
-    id:"extra-"+id,
-    name:extra.name,
-    price:extra.price,
-    details:"Optional extra",
-    type:"extra"
+    id:"extra-"+id,name:extra.name,price:extra.price,
+    details:"Optional extra",type:"extra"
   });
 }
 
@@ -1074,6 +1049,7 @@ function changeCustom(id,change) {
   if(display) display.textContent=customQuantities[id];
 }
 
+/* CUSTOM PACK: CUSTOMER CAN CHOOSE ITEMS, WRITE IDEAS, OR BOTH */
 function addCustomPack() {
   const selected=Object.keys(customItems).filter(id =>
     (customQuantities[id]||0)>0
@@ -1230,26 +1206,6 @@ function addRecommendation(id) {
   renderCheckoutSummary();
 }
 
-/* This opens an email with the customer's suggestion */
-function sendPackSuggestion() {
-  const field=document.getElementById("pack-suggestion");
-  const idea=field.value.trim();
-
-  if(!idea) {
-    alert("Please write your idea first!");
-    field.focus();
-    return;
-  }
-
-  const subject=encodeURIComponent("Pack Shack Box Suggestion");
-  const body=encodeURIComponent(
-    "Hello The Pack Shack!\n\nI'd love to suggest a new box:\n\n"+idea+"\n\nThank you!"
-  );
-
-  window.location.href=
-    "mailto:PackShack00@outlook.com?subject="+subject+"&body="+body;
-}
-
 function renderCheckoutSummary() {
   const holder=document.getElementById("checkout-summary");
 
@@ -1277,6 +1233,20 @@ function renderCheckoutSummary() {
     <hr>
     <p><strong>Ready-made items total: ${money(total)}</strong></p>
     ${hasCustom?"<p>Custom pack price: To be confirmed after review.</p>":""}`;
+}
+
+function sendPackSuggestion() {
+  const suggestion=document.getElementById("pack-suggestion").value.trim();
+
+  if(!suggestion) {
+    alert("Please write your pack idea first.");
+    return;
+  }
+
+  const subject=encodeURIComponent("Pack idea for The Pack Shack");
+  const body=encodeURIComponent("Hello The Pack Shack,\n\nI'd like to suggest this pack idea:\n\n"+suggestion+"\n\nThank you!");
+
+  window.location.href="mailto:PackShack00@outlook.com?subject="+subject+"&body="+body;
 }
 
 document.getElementById("meetup").addEventListener("change",function() {
