@@ -1,15 +1,13 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Pack Shack</title>
+<title>The Pack Shack | Thoughtful Little Packs</title>
 
 <style>
 :root {
   --pink:#f3d9dc;
-  --pink-dark:#dbaeb5;
   --cream:#fffaf3;
   --yellow:#f7edc9;
   --ink:#403a38;
@@ -121,6 +119,7 @@ p { color:var(--muted); }
   font-family:Arial,sans-serif;
 }
 .button:hover { background:#665653; }
+.button:disabled { opacity:.55; cursor:not-allowed; }
 .button.secondary {
   background:white;
   color:var(--ink);
@@ -169,6 +168,29 @@ p { color:var(--muted); }
   margin:13px 0;
 }
 .product-info .button { width:100%; text-align:center; }
+.christmas-gallery {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:7px;
+  padding:8px;
+  background:#fffaf3;
+}
+.christmas-gallery img {
+  width:100%;
+  height:150px;
+  object-fit:cover;
+  border-radius:5px;
+}
+.seasonal-label {
+  display:inline-block;
+  background:#e8f0e4;
+  color:#426344;
+  border-radius:20px;
+  padding:5px 11px;
+  font-size:11px;
+  font-weight:bold;
+  margin:0 0 8px;
+}
 .custom-banner {
   background:var(--yellow);
   padding:35px;
@@ -254,10 +276,7 @@ p { color:var(--muted); }
   padding:22px;
   margin-top:25px;
 }
-.own-ideas h2 {
-  margin-top:0;
-  font-size:24px;
-}
+.own-ideas h2 { margin-top:0; font-size:24px; }
 .own-ideas p { font-size:14px; }
 .form-group { margin:20px 0; }
 .form-group label {
@@ -291,10 +310,7 @@ p { color:var(--muted); }
   text-align:center;
   margin-top:25px;
 }
-.price-request strong {
-  display:block;
-  font-size:21px;
-}
+.price-request strong { display:block; font-size:21px; }
 .price-request p {
   color:#675e4b;
   font-size:14px;
@@ -357,6 +373,33 @@ p { color:var(--muted); }
   font-size:16px;
 }
 .checkout-summary p { font-size:14px; }
+.recommendations {
+  background:#fff9f1;
+  border:1px solid var(--border);
+  border-radius:8px;
+  padding:18px;
+  margin:22px 0;
+}
+.recommendations h3 { margin:0 0 5px; }
+.recommendation-grid {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:12px;
+  margin-top:14px;
+}
+.recommendation {
+  background:white;
+  border:1px solid var(--border);
+  border-radius:7px;
+  padding:13px;
+}
+.recommendation strong { display:block; font-size:14px; }
+.recommendation p { font-size:12px; margin:5px 0; }
+.recommendation .button {
+  width:100%;
+  padding:9px 8px;
+  font-size:12px;
+}
 .about-panel p { color:var(--muted); }
 .hidden { display:none !important; }
 .toast {
@@ -407,6 +450,8 @@ footer a { color:var(--ink); }
   .extras-grid { grid-template-columns:1fr 1fr; }
   .hero { padding:65px 18px; }
   .custom-layout,.panel { padding:17px; }
+  .recommendation-grid { grid-template-columns:1fr; }
+  .christmas-gallery img { height:100px; }
 }
 @media(max-width:420px) {
   .extras-grid { grid-template-columns:1fr; }
@@ -461,6 +506,7 @@ footer a { color:var(--ink); }
 
   <div class="container">
     <div class="product-grid">
+
       <article class="product-card">
         <div class="product-art art-pink">Grandma's Sugar Bag</div>
         <div class="product-info">
@@ -491,6 +537,22 @@ footer a { color:var(--ink); }
         </div>
       </article>
 
+      <!-- CHRISTMAS SPECIAL -->
+      <article class="product-card">
+        <div class="christmas-gallery">
+          <img src="assets/christmas-box.jpg" alt="The Christmas Special gold gift box">
+          <img src="assets/christmas-open-box.jpg" alt="The Christmas Special box filled with treats">
+          <img src="assets/christmas-treats.jpg" alt="Christmas Special treats and gift box">
+        </div>
+        <div class="product-info">
+          <span class="seasonal-label" id="christmas-status">Available 20 November – 30 December 2026</span>
+          <h2>The Christmas Special</h2>
+          <p>A little piece of all our packs in one festive box! A lovely mix of goodies and surprises from across The Pack Shack collection.</p>
+          <div class="price">€5.00</div>
+          <button class="button" id="christmas-add-button" onclick="addReadyPack('christmas')">Add to basket</button>
+        </div>
+      </article>
+
       <article class="product-card">
         <div class="product-art art-lilac">Your Pack, Your Way</div>
         <div class="product-info">
@@ -500,6 +562,7 @@ footer a { color:var(--ink); }
           <button class="button" onclick="showPage('custom')">Create your pack</button>
         </div>
       </article>
+
     </div>
 
     <section class="custom-banner">
@@ -565,7 +628,6 @@ footer a { color:var(--ink); }
       <p>Select the quantities you'd like. You don't have to choose anything here if you'd rather write your own ideas below.</p>
 
       <div id="custom-options">
-
         <div class="custom-item">
           <div><strong>Hand sanitiser</strong><small>€1.00 each</small></div>
           <div class="quantity-control">
@@ -574,7 +636,6 @@ footer a { color:var(--ink); }
             <button type="button" onclick="changeCustom('sanitiser',1)">+</button>
           </div>
         </div>
-
         <div class="custom-item">
           <div><strong>Hair ties</strong><small>€0.50 each</small></div>
           <div class="quantity-control">
@@ -583,7 +644,6 @@ footer a { color:var(--ink); }
             <button type="button" onclick="changeCustom('hairties',1)">+</button>
           </div>
         </div>
-
         <div class="custom-item">
           <div><strong>Capri Sun</strong><small>€1.00 each</small></div>
           <div class="quantity-control">
@@ -592,7 +652,6 @@ footer a { color:var(--ink); }
             <button type="button" onclick="changeCustom('caprisun',1)">+</button>
           </div>
         </div>
-
         <div class="custom-item">
           <div><strong>Mini sweet packet</strong><small>€0.50 each</small></div>
           <div class="quantity-control">
@@ -601,7 +660,6 @@ footer a { color:var(--ink); }
             <button type="button" onclick="changeCustom('minisweets',1)">+</button>
           </div>
         </div>
-
         <div class="custom-item">
           <div><strong>Small chocolate</strong><small>€0.50 each</small></div>
           <div class="quantity-control">
@@ -610,7 +668,6 @@ footer a { color:var(--ink); }
             <button type="button" onclick="changeCustom('smallchoc',1)">+</button>
           </div>
         </div>
-
         <div class="custom-item">
           <div><strong>Pens</strong><small>€0.50 each</small></div>
           <div class="quantity-control">
@@ -619,7 +676,6 @@ footer a { color:var(--ink); }
             <button type="button" onclick="changeCustom('pens',1)">+</button>
           </div>
         </div>
-
         <div class="custom-item">
           <div><strong>Notepad</strong><small>€1.00 each</small></div>
           <div class="quantity-control">
@@ -628,25 +684,17 @@ footer a { color:var(--ink); }
             <button type="button" onclick="changeCustom('notepad',1)">+</button>
           </div>
         </div>
-
       </div>
 
-      <!-- CUSTOM TEXT BOX -->
       <div class="custom-divider">OR</div>
 
       <section class="own-ideas">
         <h2>Can't find what you're looking for?</h2>
         <p>Tell us what you'd like in your pack! You can use this box instead of choosing from the list, or use both.</p>
-
         <div class="form-group">
           <label for="custom-request">What would you like in your pack?</label>
-          <textarea
-            id="custom-request"
-            placeholder="For example: I'd like pink stationery, lip balm, a blue pen and some extra sweets..."
-          ></textarea>
-          <div class="field-hint">
-            Write down any items, colours, treats or special ideas you'd love us to include.
-          </div>
+          <textarea id="custom-request" placeholder="For example: I'd like pink stationery, lip balm, a blue pen and some extra sweets..."></textarea>
+          <div class="field-hint">Write down any items, colours, treats or special ideas you'd love us to include.</div>
         </div>
       </section>
 
@@ -718,8 +766,14 @@ footer a { color:var(--ink); }
 
         <label class="check-row">
           <input type="checkbox" id="offers">
-          <span>I'd like to hear about new packs and offers.</span>
+          <span>I'd like to stay informed about upcoming packs.</span>
         </label>
+
+        <section class="recommendations" id="checkout-recommendations">
+          <h3>You might also like…</h3>
+          <p>Fancy adding another little treat to your order?</p>
+          <div class="recommendation-grid" id="recommendation-grid"></div>
+        </section>
 
         <div class="checkout-summary" id="checkout-summary"></div>
 
@@ -771,7 +825,8 @@ footer a { color:var(--ink); }
 const readyPacks = {
   grandma:{name:"Grandma's Sugar Bag",price:5.00,details:"Sweets, chocolates and more."},
   smarty:{name:"The Smarty Pack",price:5.00,details:"For people preparing for exams."},
-  health:{name:"Health and Beauty Pack",price:6.50,details:"Hand sanitiser, hair ties and more."}
+  health:{name:"Health and Beauty Pack",price:6.50,details:"Hand sanitiser, hair ties and more."},
+  christmas:{name:"The Christmas Special",price:5.00,details:"A little piece of all our packs in one festive box. Available 20 November to 30 December 2026.",seasonal:true}
 };
 
 const extraItems = {
@@ -842,7 +897,10 @@ function showPage(page) {
   });
 
   if(page==="basket") renderBasket();
-  if(page==="checkout") renderCheckoutSummary();
+  if(page==="checkout") {
+    renderCheckoutRecommendations();
+    renderCheckoutSummary();
+  }
 
   hideToast();
   window.scrollTo(0,0);
@@ -863,7 +921,10 @@ function showPageWithoutHistory(page) {
   });
 
   if(page==="basket") renderBasket();
-  if(page==="checkout") renderCheckoutSummary();
+  if(page==="checkout") {
+    renderCheckoutRecommendations();
+    renderCheckoutSummary();
+  }
 
   hideToast();
   window.scrollTo(0,0);
@@ -886,13 +947,55 @@ function addToBasket(item) {
   showToast(item.name+" added to your basket!");
 }
 
+function isChristmasSpecialAvailable() {
+  // Dates are inclusive and interpreted in the customer's local calendar.
+  const today = new Date();
+  const current = new Date(today.getFullYear(),today.getMonth(),today.getDate());
+  const start = new Date(2026,10,20);
+  const end = new Date(2026,11,30);
+  return current >= start && current <= end;
+}
+
+function updateChristmasAvailability() {
+  const button = document.getElementById("christmas-add-button");
+  const status = document.getElementById("christmas-status");
+  if(!button || !status) return;
+
+  const today = new Date();
+  const current = new Date(today.getFullYear(),today.getMonth(),today.getDate());
+  const start = new Date(2026,10,20);
+  const end = new Date(2026,11,30);
+
+  if(current < start) {
+    button.disabled = true;
+    button.textContent = "Available from 20 November";
+    status.textContent = "Coming 20 November 2026";
+  } else if(current > end) {
+    button.disabled = true;
+    button.textContent = "No longer available";
+    status.textContent = "Seasonal pack ended 30 December 2026";
+  } else {
+    button.disabled = false;
+    button.textContent = "Add to basket";
+    status.textContent = "Available until 30 December 2026";
+  }
+}
+
 function addReadyPack(id) {
   const pack = readyPacks[id];
   if(!pack) return;
 
+  if(id==="christmas" && !isChristmasSpecialAvailable()) {
+    alert("The Christmas Special is available from 20 November to 30 December 2026.");
+    return;
+  }
+
   addToBasket({
-    id:id,name:pack.name,price:pack.price,
-    details:pack.details,type:"ready"
+    id:id,
+    name:pack.name,
+    price:pack.price,
+    details:pack.details,
+    type:"ready"
   });
 }
 
@@ -901,8 +1004,11 @@ function addExtra(id) {
   if(!extra) return;
 
   addToBasket({
-    id:"extra-"+id,name:extra.name,price:extra.price,
-    details:"Optional extra",type:"extra"
+    id:"extra-"+id,
+    name:extra.name,
+    price:extra.price,
+    details:"Optional extra",
+    type:"extra"
   });
 }
 
@@ -920,7 +1026,6 @@ function addCustomPack() {
 
   const specialRequest=document.getElementById("custom-request").value.trim();
 
-  /* Only stop the customer if they have chosen nothing AND written nothing */
   if(selected.length===0 && specialRequest==="") {
     alert("Please choose an item or write what you'd like in your custom pack.");
     return;
@@ -944,7 +1049,6 @@ function addCustomPack() {
     type:"custom"
   });
 
-  /* Reset the quantities and text box after adding */
   customQuantities={};
 
   Object.keys(customItems).forEach(id => {
@@ -1032,6 +1136,43 @@ function removeBasketItem(index) {
   basket.splice(index,1);
   saveBasket();
   renderBasket();
+}
+
+function renderCheckoutRecommendations() {
+  const holder = document.getElementById("recommendation-grid");
+  if(!holder) return;
+
+  const suggestions = [
+    {id:"grandma",name:"Grandma's Sugar Bag",price:5.00,details:"Sweets, chocolates and more."},
+    {id:"smarty",name:"The Smarty Pack",price:5.00,details:"For people preparing for exams."},
+    {id:"health",name:"Health and Beauty Pack",price:6.50,details:"Hand sanitiser, hair ties and more."},
+    {id:"christmas",name:"The Christmas Special",price:5.00,details:"A festive mix of goodies from all our packs.",seasonal:true}
+  ];
+
+  const available = suggestions.filter(pack =>
+    !basket.some(item => item.id===pack.id) &&
+    (!pack.seasonal || isChristmasSpecialAvailable())
+  );
+
+  if(available.length===0) {
+    holder.innerHTML = "<p>You've already picked all our ready-made packs. Thank you!</p>";
+    return;
+  }
+
+  holder.innerHTML = available.map(pack => `
+    <article class="recommendation">
+      <strong>${escapeHTML(pack.name)}</strong>
+      <p>${escapeHTML(pack.details)}</p>
+      <p><b>${money(pack.price)}</b></p>
+      <button class="button secondary" type="button" onclick="addRecommendation('${pack.id}')">Add this pack</button>
+    </article>
+  `).join("");
+}
+
+function addRecommendation(id) {
+  addReadyPack(id);
+  renderCheckoutRecommendations();
+  renderCheckoutSummary();
 }
 
 function renderCheckoutSummary() {
@@ -1128,7 +1269,7 @@ document.getElementById("checkout-form").addEventListener("submit",function(even
     "",
     "Gift order: "+(gift?"Yes":"No"),
     gift&&giftMessage?"Gift message: "+giftMessage:"",
-    "Interested in new packs and offers: "+(offers?"Yes":"No"),
+    "Permission to receive updates about upcoming packs: "+(offers?"Yes":"No"),
     "",
     "I understand that my order is only confirmed once The Pack Shack replies.",
     "",
@@ -1147,6 +1288,7 @@ document.getElementById("checkout-form").addEventListener("submit",function(even
 /* START WEBSITE */
 loadBasket();
 updateBasketCount();
+updateChristmasAvailability();
 
 const initialPage=window.location.hash.replace("#","");
 
@@ -1159,4 +1301,3 @@ if(["home","collection","custom","basket","checkout","about"].includes(initialPa
 
 </body>
 </html>
-```
