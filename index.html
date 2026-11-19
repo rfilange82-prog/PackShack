@@ -14,224 +14,308 @@
   --ink:#403a38;
   --muted:#827873;
   --border:#eadfda;
+  --white:#ffffff;
 }
-* { box-sizing:border-box; }
+
+* {
+  box-sizing:border-box;
+}
+
+html {
+  scroll-behavior:smooth;
+}
+
 body {
   margin:0;
+  font-family:Arial, sans-serif;
   background:var(--cream);
   color:var(--ink);
-  font-family:Arial,sans-serif;
   line-height:1.6;
 }
+
 header {
-  background:var(--cream);
-  border-bottom:1px solid var(--border);
-  position:sticky;
-  top:0;
-  z-index:20;
+  background:var(--pink);
+  padding:20px;
+  text-align:center;
 }
-.header-inner {
-  max-width:1150px;
-  margin:auto;
-  padding:15px 24px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:18px;
-}
+
 .logo {
-  font-family:Georgia,serif;
-  font-size:27px;
+  font-family:Georgia, serif;
+  font-size:36px;
   font-weight:bold;
-  cursor:pointer;
-  white-space:nowrap;
+  margin:0;
 }
+
+.tagline {
+  margin:0;
+  color:#665653;
+}
+
 nav {
   display:flex;
-  align-items:center;
-  gap:16px;
+  justify-content:center;
   flex-wrap:wrap;
+  gap:8px;
+  padding:14px;
+  background:#fff7f5;
+  border-bottom:1px solid var(--border);
 }
+
 nav button {
-  background:none;
   border:0;
+  background:transparent;
   color:var(--ink);
-  font-size:12px;
-  font-weight:bold;
-  cursor:pointer;
-  padding:8px 0;
-}
-nav button:hover,nav button.active { color:#a76e78; }
-nav .basket-nav {
-  background:var(--pink);
-  padding:8px 13px;
+  padding:10px 14px;
   border-radius:20px;
+  cursor:pointer;
+  font-weight:bold;
+  font-size:14px;
 }
-.page { display:none; min-height:68vh; }
-.page.active { display:block; }
-.container { width:min(1050px,90%); margin:auto; }
-h1,h2,h3 { font-family:Georgia,serif; line-height:1.25; }
-p { color:var(--muted); }
+
+nav button:hover,
+nav button.active {
+  background:var(--pink);
+}
+
+main {
+  max-width:1100px;
+  margin:auto;
+  padding:25px 18px 50px;
+}
+
+.page {
+  display:none;
+}
+
+.page.active {
+  display:block;
+}
+
 .hero {
   background:var(--pink);
-  padding:85px 20px;
+  border-radius:22px;
+  padding:55px 25px;
   text-align:center;
+  margin-bottom:30px;
 }
-.hero h1 {
-  font-size:clamp(38px,6vw,62px);
-  max-width:750px;
-  margin:12px auto;
+
+.hero h2 {
+  font-family:Georgia,serif;
+  font-size:38px;
+  margin:0 0 12px;
 }
+
 .hero p {
-  max-width:570px;
-  margin:15px auto 25px;
-  color:#65575a;
+  max-width:600px;
+  margin:0 auto 20px;
   font-size:17px;
 }
-.eyebrow {
-  text-transform:uppercase;
-  letter-spacing:2px;
-  font-size:11px;
-  font-weight:bold;
-  color:#986d74;
+
+h2, h3 {
+  font-family:Georgia,serif;
 }
-.page-heading {
+
+.section-heading {
   text-align:center;
-  padding:52px 20px 35px;
+  margin:35px 0 22px;
 }
-.page-heading h1 {
-  font-size:clamp(35px,5vw,49px);
-  margin:12px 0;
+
+.section-heading h2 {
+  font-size:30px;
+  margin-bottom:5px;
 }
-.page-heading p { max-width:600px; margin:auto; }
-.intro { text-align:center; padding:65px 20px; }
-.intro p { max-width:600px; margin:15px auto; }
+
+.muted {
+  color:var(--muted);
+}
+
 .button {
   display:inline-block;
+  border:0;
   background:var(--ink);
   color:white;
-  border:0;
-  border-radius:5px;
-  padding:12px 22px;
-  font-size:14px;
-  font-weight:bold;
-  text-decoration:none;
+  padding:12px 20px;
+  border-radius:25px;
   cursor:pointer;
-  font-family:Arial,sans-serif;
-}
-.button:hover { background:#665653; }
-.button:disabled { opacity:.55; cursor:not-allowed; }
-.button.secondary {
-  background:white;
-  color:var(--ink);
-  border:1px solid var(--border);
-}
-.button-row {
-  display:flex;
-  justify-content:center;
-  gap:12px;
-  flex-wrap:wrap;
-}
-.product-grid {
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:23px;
-  padding-bottom:50px;
-}
-.product-card {
-  background:white;
-  border:1px solid var(--border);
-  border-radius:9px;
-  overflow:hidden;
-}
-.product-art {
-  height:185px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  text-align:center;
-  padding:20px;
-  font-family:Georgia,serif;
-  font-size:26px;
-  color:#655253;
-}
-.art-pink { background:#f2dadd; }
-.art-yellow { background:#f7edc9; }
-.art-cream { background:#f0e7dc; }
-.art-lilac { background:#e9e2ed; }
-.product-info { padding:21px; }
-.product-info h2 { font-size:24px; margin:0 0 8px; }
-.product-info p { font-size:14px; min-height:42px; }
-.price {
-  color:var(--ink);
   font-weight:bold;
-  font-size:17px;
-  margin:13px 0;
+  font-size:14px;
+  text-decoration:none;
 }
-.product-info .button { width:100%; text-align:center; }
+
+.button:hover {
+  opacity:.85;
+}
+
+.button.secondary {
+  background:var(--pink);
+  color:var(--ink);
+}
+
+.button.yellow {
+  background:var(--yellow);
+  color:var(--ink);
+}
+
+.button:disabled {
+  opacity:.45;
+  cursor:not-allowed;
+}
+
+.grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+  gap:20px;
+}
+
+.card {
+  background:white;
+  border:1px solid var(--border);
+  border-radius:18px;
+  padding:20px;
+  box-shadow:0 4px 14px rgba(0,0,0,.035);
+}
+
+.card h3 {
+  margin:0 0 8px;
+  font-size:22px;
+}
+
+.card p {
+  color:var(--muted);
+}
+
+.price {
+  font-size:21px;
+  font-weight:bold;
+  margin:12px 0;
+}
+
+.card .button {
+  width:100%;
+  margin-top:8px;
+}
+
+.custom-banner {
+  background:var(--yellow);
+  padding:28px;
+  border-radius:18px;
+  text-align:center;
+  margin:30px 0;
+}
+
 .christmas-gallery {
   display:grid;
   grid-template-columns:repeat(3,1fr);
-  gap:7px;
-  padding:8px;
-  background:#fffaf3;
+  gap:8px;
+  margin:12px 0;
 }
+
 .christmas-gallery img {
   width:100%;
-  height:150px;
+  height:145px;
   object-fit:cover;
-  border-radius:5px;
+  border-radius:12px;
+  background:var(--cream);
 }
-.seasonal-label {
+
+.availability {
   display:inline-block;
-  background:#e8f0e4;
-  color:#426344;
-  border-radius:20px;
-  padding:5px 11px;
-  font-size:11px;
-  font-weight:bold;
-  margin:0 0 8px;
-}
-.custom-banner {
+  padding:5px 10px;
+  border-radius:15px;
   background:var(--yellow);
-  padding:35px;
-  text-align:center;
-  border-radius:9px;
-  margin:0 auto 55px;
+  font-size:12px;
+  font-weight:bold;
+  margin:5px 0;
 }
-.custom-banner p {
-  max-width:570px;
-  margin:12px auto 20px;
-  color:#675e4b;
-}
-.extras-section { padding-bottom:55px; }
-.extras-grid {
+
+.product-list {
   display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:15px;
+  grid-template-columns:repeat(auto-fit,minmax(190px,1fr));
+  gap:12px;
 }
-.extra-card {
-  background:white;
-  border:1px solid var(--border);
-  border-radius:8px;
-  padding:18px;
-}
-.extra-card h3 {
-  font-family:Arial,sans-serif;
-  font-size:16px;
-  margin:0;
-}
-.extra-card p { font-size:13px; margin:6px 0; }
-.extra-card .button { width:100%; margin-top:8px; }
-.custom-layout,.panel {
-  max-width:760px;
-  margin:0 auto 60px;
-  background:white;
-  border:1px solid var(--border);
-  border-radius:9px;
-  padding:25px;
-}
+
 .custom-item {
+  background:white;
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:14px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+}
+
+.quantity-controls {
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+
+.quantity-controls button {
+  border:0;
+  background:var(--pink);
+  border-radius:50%;
+  width:30px;
+  height:30px;
+  cursor:pointer;
+  font-weight:bold;
+}
+
+.quantity {
+  min-width:18px;
+  text-align:center;
+  font-weight:bold;
+}
+
+.form-card {
+  background:white;
+  border:1px solid var(--border);
+  border-radius:18px;
+  padding:22px;
+  margin-bottom:20px;
+}
+
+label {
+  display:block;
+  font-weight:bold;
+  margin:12px 0 5px;
+}
+
+input,
+select,
+textarea {
+  width:100%;
+  padding:12px;
+  border:1px solid var(--border);
+  border-radius:10px;
+  font:inherit;
+  background:#fffdfb;
+  color:var(--ink);
+}
+
+textarea {
+  min-height:95px;
+  resize:vertical;
+}
+
+.checkbox-row {
+  display:flex;
+  align-items:flex-start;
+  gap:10px;
+  margin:14px 0;
+}
+
+.checkbox-row input {
+  width:auto;
+  margin-top:6px;
+}
+
+.checkbox-row label {
+  margin:0;
+  font-weight:normal;
+}
+
+.basket-item {
   display:flex;
   justify-content:space-between;
   align-items:center;
@@ -239,275 +323,135 @@ p { color:var(--muted); }
   padding:15px 0;
   border-bottom:1px solid var(--border);
 }
-.custom-item:last-child { border-bottom:0; }
-.custom-item strong { display:block; }
-.custom-item small { color:var(--muted); }
-.quantity-control {
-  display:flex;
-  align-items:center;
-  gap:12px;
-}
-.quantity-control button {
-  width:32px;
-  height:32px;
-  border:1px solid var(--border);
-  background:var(--cream);
-  border-radius:50%;
+
+.basket-item h3 {
   font-size:18px;
-  cursor:pointer;
-  color:var(--ink);
+  margin:0;
 }
-.quantity-control span {
-  min-width:18px;
-  text-align:center;
-  font-weight:bold;
-}
-.custom-divider {
-  text-align:center;
-  margin:30px 0;
-  color:#a18c83;
-  font-size:13px;
-  font-weight:bold;
-  letter-spacing:2px;
-}
-.own-ideas {
-  background:#fff9f1;
-  border:1px solid var(--border);
-  border-radius:8px;
-  padding:22px;
-  margin-top:25px;
-}
-.own-ideas h2 { margin-top:0; font-size:24px; }
-.own-ideas p { font-size:14px; }
-.form-group { margin:20px 0; }
-.form-group label {
-  display:block;
-  font-weight:bold;
-  font-size:14px;
-  margin-bottom:7px;
-}
-.form-group input,.form-group select,.form-group textarea {
-  width:100%;
-  border:1px solid var(--border);
-  border-radius:5px;
-  padding:12px;
-  background:#fffdfb;
-  font:inherit;
-  color:var(--ink);
-}
-.form-group textarea {
-  min-height:125px;
-  resize:vertical;
-}
-.field-hint {
-  font-size:12px;
+
+.basket-item p {
+  margin:3px 0;
   color:var(--muted);
-  margin-top:7px;
 }
-.price-request {
-  background:var(--yellow);
-  padding:22px;
-  border-radius:7px;
-  text-align:center;
-  margin-top:25px;
+
+.remove-button {
+  background:none;
+  border:0;
+  color:#a44b4b;
+  cursor:pointer;
+  text-decoration:underline;
 }
-.price-request strong { display:block; font-size:21px; }
-.price-request p {
-  color:#675e4b;
-  font-size:14px;
-  margin-bottom:0;
-}
-.custom-actions { text-align:center; margin-top:22px; }
-.basket-line {
+
+.summary-line {
   display:flex;
   justify-content:space-between;
-  align-items:flex-start;
   gap:15px;
-  padding:18px 0;
-  border-bottom:1px solid var(--border);
-}
-.basket-line h3 {
-  font-family:Arial,sans-serif;
-  font-size:16px;
-  margin:0 0 5px;
-}
-.basket-line p { font-size:13px; margin:4px 0; }
-.line-price {
-  font-weight:bold;
-  white-space:nowrap;
-  font-size:14px;
-}
-.remove-button {
-  border:0;
-  background:none;
-  color:#a36e76;
-  text-decoration:underline;
-  cursor:pointer;
-  font-size:12px;
   padding:7px 0;
 }
-.basket-total {
-  display:flex;
-  justify-content:space-between;
+
+.summary-total {
   border-top:1px solid var(--border);
-  padding:20px 0;
-  font-size:20px;
+  margin-top:10px;
+  padding-top:15px;
+  font-size:21px;
   font-weight:bold;
 }
-.basket-note { font-size:13px; color:var(--muted); }
-.empty-basket { text-align:center; padding:40px 10px; }
-.check-row {
-  display:flex;
-  gap:10px;
-  align-items:flex-start;
-  font-size:14px;
-  margin:16px 0;
-}
-.checkout-summary {
-  background:var(--cream);
-  padding:18px;
-  border-radius:6px;
+
+.suggestion-section {
+  background:var(--yellow);
+  border-radius:16px;
+  padding:20px;
   margin:22px 0;
 }
-.checkout-summary h3 {
-  font-family:Arial,sans-serif;
-  font-size:16px;
+
+.suggestion-section h3 {
+  margin-top:0;
+  font-size:22px;
 }
-.checkout-summary p { font-size:14px; }
-.recommendations {
-  background:#fff9f1;
-  border:1px solid var(--border);
-  border-radius:8px;
-  padding:18px;
-  margin:22px 0;
-}
-.recommendations h3 { margin:0 0 5px; }
-.recommendation-grid {
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:12px;
-  margin-top:14px;
-}
-.recommendation {
+
+.suggestion-section textarea {
   background:white;
+  margin:8px 0 12px;
+}
+
+.note {
+  background:#fff7f5;
+  border-left:4px solid var(--pink);
+  padding:14px;
+  border-radius:8px;
+  color:var(--muted);
+  font-size:14px;
+  margin:15px 0;
+}
+
+.empty-message {
+  text-align:center;
+  padding:35px 15px;
+  background:white;
+  border-radius:16px;
   border:1px solid var(--border);
-  border-radius:7px;
-  padding:13px;
 }
-.recommendation strong { display:block; font-size:14px; }
-.recommendation p { font-size:12px; margin:5px 0; }
-.recommendation .button {
-  width:100%;
-  padding:9px 8px;
-  font-size:12px;
+
+footer {
+  text-align:center;
+  background:var(--pink);
+  padding:25px 15px;
+  margin-top:30px;
 }
-.about-panel p { color:var(--muted); }
-.hidden { display:none !important; }
+
+footer p {
+  margin:5px;
+}
+
 .toast {
   position:fixed;
   bottom:20px;
   left:50%;
-  transform:translate(-50%,150px);
+  transform:translateX(-50%);
   background:var(--ink);
   color:white;
-  padding:13px 17px;
-  border-radius:7px;
-  z-index:40;
-  width:min(420px,calc(100% - 30px));
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:10px;
-  box-shadow:0 5px 25px #0002;
-  transition:transform .3s;
-}
-.toast.show { transform:translate(-50%,0); }
-.toast button {
-  background:var(--pink);
-  color:var(--ink);
-  padding:8px 11px;
-  border:0;
-  border-radius:4px;
-  font-size:12px;
-  font-weight:bold;
-  cursor:pointer;
-  white-space:nowrap;
-}
-footer {
-  background:#f5e9e5;
-  padding:28px 20px;
+  padding:12px 20px;
+  border-radius:25px;
+  display:none;
+  z-index:100;
+  box-shadow:0 4px 15px rgba(0,0,0,.2);
+  max-width:90%;
   text-align:center;
-  color:var(--muted);
-  font-size:13px;
-  margin-top:40px;
 }
-footer a { color:var(--ink); }
 
-/* SUGGEST A PACK BOX */
-.suggestion-box {
-  position:fixed;
-  right:15px;
-  top:45%;
-  width:220px;
-  background:#fffaf3;
-  border:2px solid #d8b98c;
-  border-radius:14px;
-  padding:15px;
-  z-index:999;
-  box-shadow:0 4px 12px rgba(0,0,0,0.15);
+.toast.show {
+  display:block;
 }
-.suggestion-box h3 {
-  margin:0 0 8px;
-  color:#426344;
-  font-size:17px;
-}
-.suggestion-box p {
-  font-size:12px;
-  margin-bottom:10px;
-}
-.suggestion-box textarea {
-  width:100%;
-  height:75px;
-  padding:8px;
-  border:1px solid #d8b98c;
-  border-radius:7px;
-  resize:vertical;
-  box-sizing:border-box;
-  font:inherit;
-}
-.suggestion-box button {
-  width:100%;
-  margin-top:8px;
-  padding:9px;
-  background:#426344;
-  color:white;
-  border:none;
-  border-radius:7px;
-  cursor:pointer;
-}
-.suggestion-box button:hover { background:#304d32; }
 
-@media(max-width:700px) {
-  .header-inner { flex-direction:column; padding:12px; gap:9px; }
-  nav { justify-content:center; gap:12px; }
-  nav button { font-size:10px; }
-  .product-grid { grid-template-columns:1fr; }
-  .extras-grid { grid-template-columns:1fr 1fr; }
-  .hero { padding:65px 18px; }
-  .custom-layout,.panel { padding:17px; }
-  .recommendation-grid { grid-template-columns:1fr; }
-  .christmas-gallery img { height:100px; }
-  .suggestion-box {
-    width:165px;
-    right:8px;
-    top:auto;
-    bottom:12px;
-    padding:10px;
+@media(max-width:600px) {
+  .logo {
+    font-size:30px;
   }
-}
-@media(max-width:420px) {
-  .extras-grid { grid-template-columns:1fr; }
-  .custom-item,.basket-line { align-items:flex-start; }
+
+  .hero {
+    padding:38px 18px;
+  }
+
+  .hero h2 {
+    font-size:30px;
+  }
+
+  nav {
+    gap:3px;
+  }
+
+  nav button {
+    padding:9px 10px;
+    font-size:12px;
+  }
+
+  .christmas-gallery img {
+    height:100px;
+  }
+
+  .basket-item {
+    align-items:flex-start;
+  }
 }
 </style>
 </head>
@@ -515,416 +459,384 @@ footer a { color:var(--ink); }
 <body>
 
 <header>
-  <div class="header-inner">
-    <div class="logo" onclick="showPage('home')">The Pack Shack</div>
-    <nav>
-      <button onclick="showPage('home')" data-page="home">HOME</button>
-      <button onclick="showPage('collection')" data-page="collection">OUR COLLECTION</button>
-      <button onclick="showPage('custom')" data-page="custom">CUSTOM PACK</button>
-      <button class="basket-nav" onclick="showPage('basket')" data-page="basket">
-        MY BASKET (<span id="basket-count">0</span>)
-      </button>
-      <button onclick="showPage('about')" data-page="about">ABOUT US</button>
-    </nav>
-  </div>
+  <h1 class="logo">The Pack Shack 🎀</h1>
+  <p class="tagline">Thoughtful little packs, made with love</p>
 </header>
 
+<nav>
+  <button class="active" onclick="showPage('home',this)">HOME</button>
+  <button onclick="showPage('collection',this)">OUR COLLECTION</button>
+  <button onclick="showPage('custom',this)">CUSTOM PACK</button>
+  <button onclick="showPage('basket',this)">MY BASKET (<span id="basket-count">0</span>)</button>
+  <button onclick="showPage('about',this)">ABOUT US</button>
+</nav>
+
+<main>
+
 <!-- HOME PAGE -->
-<main id="home" class="page active">
-  <section class="hero">
-    <div class="eyebrow">Thoughtful little packs for students</div>
-    <h1>A little something for everyone.</h1>
-    <p>From study essentials to sweet treats, find a pack that's just right for you.</p>
-    <div class="button-row">
-      <button class="button" onclick="showPage('collection')">Explore our collection</button>
-      <button class="button secondary" onclick="showPage('custom')">Make your own pack</button>
-    </div>
-  </section>
-  <section class="intro">
-    <div class="eyebrow">Welcome to The Pack Shack</div>
-    <h2>Small packs, thoughtful details.</h2>
-    <p>We're a TY Enterprise student business bringing together useful essentials, sweet treats and little surprises at affordable prices.</p>
-    <button class="button secondary" onclick="showPage('about')">A little about us</button>
-  </section>
-</main>
+<section id="home" class="page active">
 
-<!-- OUR COLLECTION PAGE -->
-<main id="collection" class="page">
-  <section class="page-heading">
-    <div class="eyebrow">Find your favourite</div>
-    <h1>Our Collection</h1>
-    <p>Choose one of our ready-made packs or create something of your own.</p>
-  </section>
-
-  <div class="container">
-    <div class="product-grid">
-      <article class="product-card">
-        <div class="product-art art-pink">Grandma's Sugar Bag</div>
-        <div class="product-info">
-          <h2>Grandma's Sugar Bag</h2>
-          <p>Sweets, chocolates and more.</p>
-          <div class="price">€5.00</div>
-          <button class="button" onclick="addReadyPack('grandma')">Add to basket</button>
-        </div>
-      </article>
-
-      <article class="product-card">
-        <div class="product-art art-yellow">The Smarty Pack</div>
-        <div class="product-info">
-          <h2>The Smarty Pack</h2>
-          <p>For people preparing for exams.</p>
-          <div class="price">€5.00</div>
-          <button class="button" onclick="addReadyPack('smarty')">Add to basket</button>
-        </div>
-      </article>
-
-      <article class="product-card">
-        <div class="product-art art-cream">Health &amp; Beauty</div>
-        <div class="product-info">
-          <h2>Health and Beauty Pack</h2>
-          <p>Hand sanitiser, hair ties and more.</p>
-          <div class="price">€6.50</div>
-          <button class="button" onclick="addReadyPack('health')">Add to basket</button>
-        </div>
-      </article>
-
-      <!-- CHRISTMAS SPECIAL -->
-      <article class="product-card">
-        <div class="christmas-gallery">
-          <img src="IMG-20261119-WA0017.jpg" alt="The Christmas Special gold gift box">
-          <img src="IMG-20261119-WA0012.jpg" alt="The Christmas Special box filled with treats">
-          <img src="IMG-20261119-WA0008.jpg" alt="Christmas Special treats and gift box">
-        </div>
-        <div class="product-info">
-          <span class="seasonal-label" id="christmas-status">Available 20 November – 30 December 2026</span>
-          <h2>The Christmas Special</h2>
-          <p>A little piece of all our packs in one festive box! A lovely mix of goodies and surprises from across The Pack Shack collection.</p>
-          <div class="price">€5.00</div>
-          <button class="button" id="christmas-add-button" onclick="addReadyPack('christmas')">Add to basket</button>
-        </div>
-      </article>
-
-      <article class="product-card">
-        <div class="product-art art-lilac">Your Pack, Your Way</div>
-        <div class="product-info">
-          <h2>Make Your Own Custom Pack</h2>
-          <p>Choose your own items or tell us exactly what you'd like.</p>
-          <div class="price">Price on request</div>
-          <button class="button" onclick="showPage('custom')">Create your pack</button>
-        </div>
-      </article>
-    </div>
-
-    <section class="custom-banner">
-      <div class="eyebrow">A little extra</div>
-      <h2>Make it your own</h2>
-      <p>Choose your favourite items or tell us your own ideas. We'll put together a custom pack just for you.</p>
-      <button class="button" onclick="showPage('custom')">Build a custom pack</button>
-    </section>
-
-    <section class="extras-section">
-      <div class="page-heading">
-        <div class="eyebrow">Little extras</div>
-        <h2>Something on the side?</h2>
-        <p>Add an extra treat or useful item to your basket.</p>
-      </div>
-      <div class="extras-grid">
-        <article class="extra-card">
-          <h3>Extra sweets</h3><p>A little something sweet.</p>
-          <div class="price">€0.50</div>
-          <button class="button secondary" onclick="addExtra('sweets')">Add to basket</button>
-        </article>
-        <article class="extra-card">
-          <h3>Chocolate bar</h3><p>A classic chocolate treat.</p>
-          <div class="price">€1.00</div>
-          <button class="button secondary" onclick="addExtra('chocolate')">Add to basket</button>
-        </article>
-        <article class="extra-card">
-          <h3>Cute stationery</h3><p>A useful stationery extra.</p>
-          <div class="price">€1.00</div>
-          <button class="button secondary" onclick="addExtra('stationery')">Add to basket</button>
-        </article>
-        <article class="extra-card">
-          <h3>Hair accessories</h3><p>Little accessories for your hair.</p>
-          <div class="price">€0.50</div>
-          <button class="button secondary" onclick="addExtra('hair')">Add to basket</button>
-        </article>
-        <article class="extra-card">
-          <h3>Self-care extra</h3><p>A little self-care addition.</p>
-          <div class="price">€0.50</div>
-          <button class="button secondary" onclick="addExtra('selfcare')">Add to basket</button>
-        </article>
-        <article class="extra-card">
-          <h3>Mini surprise treat</h3><p>A small surprise treat.</p>
-          <div class="price">€0.50</div>
-          <button class="button secondary" onclick="addExtra('surprise')">Add to basket</button>
-        </article>
-      </div>
-    </section>
+  <div class="hero">
+    <h2>A little box of happiness 💗</h2>
+    <p>Welcome to The Pack Shack! Discover our lovely little packs, filled with thoughtful treats and surprises.</p>
+    <button class="button" onclick="showPage('collection')">Explore our packs ✨</button>
   </div>
-</main>
+
+  <div class="section-heading">
+    <h2>Little packs, lots of love</h2>
+    <p class="muted">Something special for everyone.</p>
+  </div>
+
+  <div class="grid">
+    <div class="card">
+      <h3>🎁 Ready-made packs</h3>
+      <p>Choose from our collection of carefully put-together packs.</p>
+    </div>
+    <div class="card">
+      <h3>💝 Make your own</h3>
+      <p>Choose your favourite little treats and create something personal.</p>
+    </div>
+    <div class="card">
+      <h3>✨ Thoughtful extras</h3>
+      <p>Add a few extra goodies to make your pack even more special.</p>
+    </div>
+  </div>
+
+</section>
+
+<!-- COLLECTION PAGE -->
+<section id="collection" class="page">
+
+  <div class="section-heading">
+    <h2>Our Collection 🎀</h2>
+    <p class="muted">Have a browse and find your favourite!</p>
+  </div>
+
+  <div class="grid">
+
+    <div class="card">
+      <h3>Grandma's Sugar Bag 🍬</h3>
+      <p>A sweet little selection of treats to brighten your day.</p>
+      <div class="price">€5.00</div>
+      <button class="button" onclick="addReadyPack('grandma')">Add to basket</button>
+    </div>
+
+    <div class="card">
+      <h3>The Smarty Pack ✏️</h3>
+      <p>A little collection of stationery and school essentials.</p>
+      <div class="price">€5.00</div>
+      <button class="button" onclick="addReadyPack('smarty')">Add to basket</button>
+    </div>
+
+    <div class="card">
+      <h3>Health and Beauty Pack 🧴</h3>
+      <p>A lovely little selection of self-care and beauty goodies.</p>
+      <div class="price">€6.50</div>
+      <button class="button" onclick="addReadyPack('health')">Add to basket</button>
+    </div>
+
+    <div class="card">
+      <h3>The Christmas Special 🎄</h3>
+
+      <div class="christmas-gallery">
+        <img src="IMG-20261119-WA0017.jpg" alt="The Christmas Special gold gift box">
+        <img src="IMG-20261119-WA0012.jpg" alt="The Christmas Special box filled with treats">
+        <img src="IMG-20261119-WA0008.jpg" alt="Christmas Special treats and gift box">
+      </div>
+
+      <span class="availability" id="christmas-status">Available 20 November – 30 December</span>
+
+      <p>A little piece of all our existing packs, brought together in one festive surprise!</p>
+      <div class="price">€5.00</div>
+      <button class="button" id="christmas-button" onclick="addReadyPack('christmas')">Add to basket</button>
+    </div>
+
+    <div class="card">
+      <h3>Make Your Own Custom Pack 💝</h3>
+      <p>Choose your own items and create a pack that's completely yours.</p>
+      <div class="price">Price on request</div>
+      <button class="button secondary" onclick="showPage('custom')">Create my pack</button>
+    </div>
+
+  </div>
+
+  <div class="custom-banner">
+    <h2>Want to add a little something extra?</h2>
+    <p>Make your pack even more special with our extra treats!</p>
+  </div>
+
+  <div class="section-heading">
+    <h2>Little Extras ✨</h2>
+    <p class="muted">Add these to your basket!</p>
+  </div>
+
+  <div class="grid">
+    <div class="card">
+      <h3>Extra sweets 🍬</h3>
+      <div class="price">€0.50</div>
+      <button class="button secondary" onclick="addExtra('sweets')">Add extra</button>
+    </div>
+
+    <div class="card">
+      <h3>Chocolate bar 🍫</h3>
+      <div class="price">€1.00</div>
+      <button class="button secondary" onclick="addExtra('chocolate')">Add extra</button>
+    </div>
+
+    <div class="card">
+      <h3>Cute stationery 🖊️</h3>
+      <div class="price">€1.00</div>
+      <button class="button secondary" onclick="addExtra('stationery')">Add extra</button>
+    </div>
+
+    <div class="card">
+      <h3>Hair accessories 🎀</h3>
+      <div class="price">€0.50</div>
+      <button class="button secondary" onclick="addExtra('hair')">Add extra</button>
+    </div>
+
+    <div class="card">
+      <h3>Self-care extra 🧴</h3>
+      <div class="price">€0.50</div>
+      <button class="button secondary" onclick="addExtra('selfcare')">Add extra</button>
+    </div>
+
+    <div class="card">
+      <h3>Mini surprise treat 🎁</h3>
+      <div class="price">€0.50</div>
+      <button class="button secondary" onclick="addExtra('surprise')">Add extra</button>
+    </div>
+  </div>
+
+</section>
 
 <!-- CUSTOM PACK PAGE -->
-<main id="custom" class="page">
-  <section class="page-heading">
-    <div class="eyebrow">Made just for you</div>
-    <h1>Create Your Own Pack</h1>
-    <p>Choose from our items or tell us exactly what you'd like in your pack.</p>
-  </section>
+<section id="custom" class="page">
 
-  <div class="container">
-    <section class="custom-layout">
-      <h2>Choose from our items</h2>
-      <p>Select the quantities you'd like. You don't have to choose anything here if you'd rather write your own ideas below.</p>
-
-      <div id="custom-options">
-        <div class="custom-item">
-          <div><strong>Hand sanitiser</strong><small>€1.00 each</small></div>
-          <div class="quantity-control">
-            <button type="button" onclick="changeCustom('sanitiser',-1)">−</button>
-            <span id="qty-sanitiser">0</span>
-            <button type="button" onclick="changeCustom('sanitiser',1)">+</button>
-          </div>
-        </div>
-        <div class="custom-item">
-          <div><strong>Hair ties</strong><small>€0.50 each</small></div>
-          <div class="quantity-control">
-            <button type="button" onclick="changeCustom('hairties',-1)">−</button>
-            <span id="qty-hairties">0</span>
-            <button type="button" onclick="changeCustom('hairties',1)">+</button>
-          </div>
-        </div>
-        <div class="custom-item">
-          <div><strong>Capri Sun</strong><small>€1.00 each</small></div>
-          <div class="quantity-control">
-            <button type="button" onclick="changeCustom('caprisun',-1)">−</button>
-            <span id="qty-caprisun">0</span>
-            <button type="button" onclick="changeCustom('caprisun',1)">+</button>
-          </div>
-        </div>
-        <div class="custom-item">
-          <div><strong>Mini sweet packet</strong><small>€0.50 each</small></div>
-          <div class="quantity-control">
-            <button type="button" onclick="changeCustom('minisweets',-1)">−</button>
-            <span id="qty-minisweets">0</span>
-            <button type="button" onclick="changeCustom('minisweets',1)">+</button>
-          </div>
-        </div>
-        <div class="custom-item">
-          <div><strong>Small chocolate</strong><small>€0.50 each</small></div>
-          <div class="quantity-control">
-            <button type="button" onclick="changeCustom('smallchoc',-1)">−</button>
-            <span id="qty-smallchoc">0</span>
-            <button type="button" onclick="changeCustom('smallchoc',1)">+</button>
-          </div>
-        </div>
-        <div class="custom-item">
-          <div><strong>Pens</strong><small>€0.50 each</small></div>
-          <div class="quantity-control">
-            <button type="button" onclick="changeCustom('pens',-1)">−</button>
-            <span id="qty-pens">0</span>
-            <button type="button" onclick="changeCustom('pens',1)">+</button>
-          </div>
-        </div>
-        <div class="custom-item">
-          <div><strong>Notepad</strong><small>€1.00 each</small></div>
-          <div class="quantity-control">
-            <button type="button" onclick="changeCustom('notepad',-1)">−</button>
-            <span id="qty-notepad">0</span>
-            <button type="button" onclick="changeCustom('notepad',1)">+</button>
-          </div>
-        </div>
-      </div>
-
-      <div class="custom-divider">OR</div>
-
-      <section class="own-ideas">
-        <h2>Can't find what you're looking for?</h2>
-        <p>Tell us what you'd like in your pack! You can use this box instead of choosing from the list, or use both.</p>
-        <div class="form-group">
-          <label for="custom-request">What would you like in your pack?</label>
-          <textarea id="custom-request" placeholder="For example: I'd like pink stationery, lip balm, a blue pen and some extra sweets..."></textarea>
-          <div class="field-hint">Write down any items, colours, treats or special ideas you'd love us to include.</div>
-        </div>
-      </section>
-
-      <div class="price-request">
-        <strong>Price on request</strong>
-        <p>We'll review your choices and written ideas, check availability and contact you with the final price before confirming your order.</p>
-      </div>
-
-      <div class="custom-actions">
-        <button class="button" onclick="addCustomPack()">Add custom pack to my basket</button>
-        <p style="font-size:12px">You can choose listed items, write your own ideas, or do both!</p>
-      </div>
-    </section>
+  <div class="section-heading">
+    <h2>Make Your Own Pack 💝</h2>
+    <p class="muted">Choose what you'd like and we'll put it together for you!</p>
   </div>
-</main>
+
+  <div class="note">
+    Select the quantities of the items you'd like. Your custom pack price will be based on your choices.
+  </div>
+
+  <div class="product-list" id="custom-items"></div>
+
+  <div class="form-card" style="margin-top:22px;">
+    <h3>Anything else you'd like?</h3>
+    <p class="muted">Tell us about any other items or special requests.</p>
+    <textarea id="custom-request" placeholder="I'd love to include..."></textarea>
+    <button class="button" style="margin-top:15px;" onclick="addCustomPack()">Add my custom pack to basket</button>
+  </div>
+
+</section>
 
 <!-- BASKET PAGE -->
-<main id="basket" class="page">
-  <section class="page-heading">
-    <div class="eyebrow">Your chosen goodies</div>
-    <h1>My Basket</h1>
-    <p>Have a look at everything you've picked before sending your order.</p>
-  </section>
-  <div class="container">
-    <section class="panel" id="basket-content"></section>
+<section id="basket" class="page">
+
+  <div class="section-heading">
+    <h2>My Basket 🛍️</h2>
+    <p class="muted">All your lovely little goodies in one place.</p>
   </div>
-</main>
+
+  <div class="form-card">
+    <div id="basket-content"></div>
+  </div>
+
+  <div style="text-align:center;margin-top:20px;">
+    <button class="button secondary" onclick="showPage('collection')">Continue shopping</button>
+    <button class="button" onclick="goToCheckout()">Continue to checkout</button>
+  </div>
+
+</section>
 
 <!-- CHECKOUT PAGE -->
-<main id="checkout" class="page">
-  <section class="page-heading">
-    <div class="eyebrow">Nearly there</div>
-    <h1>Your Details</h1>
-    <p>Fill in your details and choose where you'd like to meet at school.</p>
-  </section>
-  <div class="container">
-    <section class="panel">
-      <form id="checkout-form">
-        <div class="form-group">
-          <label for="customer-name">Full Name</label>
-          <input id="customer-name" type="text" required>
-        </div>
-        <div class="form-group">
-          <label for="customer-email">Email Address</label>
-          <input id="customer-email" type="email" required>
-        </div>
-        <div class="form-group">
-          <label for="meetup">Preferred School Meetup</label>
-          <select id="meetup" required>
-            <option value="">Please choose</option>
-            <option value="School entrance">School entrance</option>
-            <option value="Sports hall">Sports hall</option>
-            <option value="Other">Other</option>
-          </select>
-        </div>
-        <div class="form-group hidden" id="other-meetup-group">
-          <label for="other-meetup">Where would you prefer to meet?</label>
-          <input id="other-meetup" type="text" placeholder="Please tell us where">
-        </div>
+<section id="checkout" class="page">
 
-        <label class="check-row">
-          <input type="checkbox" id="gift">
-          <span>This order is a gift.</span>
-        </label>
-        <div class="form-group hidden" id="gift-message-group">
-          <label for="gift-message">Gift message (optional)</label>
-          <textarea id="gift-message" placeholder="Write a little message..."></textarea>
-        </div>
-
-        <label class="check-row">
-          <input type="checkbox" id="offers">
-          <span>I'd like to stay informed about upcoming packs.</span>
-        </label>
-
-        <section class="recommendations" id="checkout-recommendations">
-          <h3>You might also like…</h3>
-          <p>Fancy adding another little treat to your order?</p>
-          <div class="recommendation-grid" id="recommendation-grid"></div>
-        </section>
-
-        <div class="checkout-summary" id="checkout-summary"></div>
-
-        <p style="font-size:13px">
-          When you submit, an email will open with your order details.
-          Please press Send in your email app. Your order is only confirmed
-          once we've replied to you.
-        </p>
-
-        <button class="button" type="submit" style="width:100%">Send my order</button>
-      </form>
-    </section>
+  <div class="section-heading">
+    <h2>Checkout 💌</h2>
+    <p class="muted">Just a few details before we prepare your order.</p>
   </div>
-</main>
 
-<!-- ABOUT US PAGE -->
-<main id="about" class="page">
-  <section class="page-heading">
-    <div class="eyebrow">A little about us</div>
-    <h1>Our Story</h1>
-    <p>Get to know the people behind The Pack Shack.</p>
-  </section>
-  <div class="container">
-    <section class="panel about-panel">
-      <h2>How it all started</h2>
-      <p>We are TY Enterprise students. Our business started when we were thinking, "What would we wish we had in first year?" Study packs, so we made some and much more!</p>
-      <p>We wanted to create useful, thoughtful and affordable packs for students, with a little something for everyone. From study essentials to sweet treats, there's something for you at The Pack Shack.</p>
-      <h2>Where can I collect my order?</h2>
-      <p>We arrange meetups at school. You can choose the school entrance, sports hall or suggest another suitable place when ordering. We don't offer home deliveries.</p>
-      <h2>Have a question?</h2>
-      <p>Email us at <a href="mailto:PackShack00@outlook.com">PackShack00@outlook.com</a>.</p>
-      <button class="button" onclick="showPage('collection')">Explore our collection</button>
-    </section>
+  <form id="checkout-form">
+
+    <div class="form-card">
+      <h3>Your details</h3>
+
+      <label for="customer-name">Full Name *</label>
+      <input id="customer-name" type="text" required placeholder="Your full name">
+
+      <label for="customer-email">Email Address *</label>
+      <input id="customer-email" type="email" required placeholder="Your email address">
+
+      <label for="meetup">Preferred school meetup *</label>
+      <select id="meetup" required>
+        <option value="">Please choose</option>
+        <option value="School entrance">School entrance</option>
+        <option value="Sports hall">Sports hall</option>
+        <option value="Other">Other</option>
+      </select>
+
+      <div id="other-meetup-container" style="display:none;">
+        <label for="other-meetup">Where would you prefer?</label>
+        <input id="other-meetup" type="text" placeholder="Tell us where">
+      </div>
+    </div>
+
+    <div class="form-card">
+      <h3>A little something extra 💝</h3>
+
+      <div class="checkbox-row">
+        <input type="checkbox" id="is-gift">
+        <label for="is-gift">This order is a gift.</label>
+      </div>
+
+      <div id="gift-message-container" style="display:none;">
+        <label for="gift-message">Gift message</label>
+        <textarea id="gift-message" placeholder="Write your gift message here..."></textarea>
+      </div>
+
+      <div class="checkbox-row">
+        <input type="checkbox" id="offers">
+        <label for="offers">I'd like to hear about future packs and special offers.</label>
+      </div>
+    </div>
+
+    <div class="form-card">
+      <h3>You might also like ✨</h3>
+      <p class="muted">A few little extras you could add to your order.</p>
+      <div id="checkout-recommendations" class="grid"></div>
+    </div>
+
+    <div class="form-card">
+      <h3>Your order summary 🛍️</h3>
+      <div id="checkout-summary"></div>
+
+      <!-- SUGGEST A PACK IS NOW PART OF CHECKOUT -->
+      <section class="suggestion-section">
+        <h3>💡 Have an idea for a new pack?</h3>
+        <p>We'd love to hear your ideas! Tell us what you'd like to see in The Pack Shack.</p>
+        <textarea id="pack-suggestion" placeholder="I'd love a pack with..."></textarea>
+        <button class="button secondary" type="button" onclick="sendPackSuggestion()">Send my suggestion ✨</button>
+      </section>
+
+      <div class="note">
+        When you press Send my order, your email app will open with your order details ready. Please press Send in your email app to submit your order. Your order is only confirmed once The Pack Shack replies.
+      </div>
+
+      <button class="button" type="submit" style="width:100%;font-size:16px;">Send my order 💌</button>
+    </div>
+
+  </form>
+
+  <div style="text-align:center;">
+    <button class="button secondary" onclick="showPage('basket')">Back to basket</button>
   </div>
+
+</section>
+
+<!-- ABOUT PAGE -->
+<section id="about" class="page">
+
+  <div class="section-heading">
+    <h2>About The Pack Shack 💗</h2>
+    <p class="muted">A little bit about us!</p>
+  </div>
+
+  <div class="form-card">
+    <h3>Welcome to The Pack Shack!</h3>
+    <p>We believe that the little things can make someone's day. That's why we put together thoughtful little packs filled with treats, surprises and useful goodies.</p>
+
+    <p>Whether you're choosing one of our ready-made packs or creating something completely your own, we hope there's something here that makes you smile.</p>
+
+    <p>Thank you so much for supporting The Pack Shack. Every order means a lot to us! 🎀</p>
+  </div>
+
+</section>
+
 </main>
 
 <footer>
-  <p>The Pack Shack · TY Enterprise</p>
-  <p>School meetups only · No home deliveries</p>
-  <p><a href="mailto:PackShack00@outlook.com">PackShack00@outlook.com</a></p>
+  <h3>The Pack Shack 🎀</h3>
+  <p>Thoughtful little packs, made with love.</p>
+  <p>Questions? Email us at PackShack00@outlook.com</p>
+  <p>© 2026 The Pack Shack</p>
 </footer>
 
-<!-- SUGGEST A PACK BOX -->
-<div class="suggestion-box">
-  <h3>💡 Suggest a Pack!</h3>
-  <p>Have an idea for a new pack? We'd love to hear it!</p>
-  <textarea id="pack-suggestion" placeholder="Tell us your idea..."></textarea>
-  <button type="button" onclick="sendPackSuggestion()">Send Suggestion ✨</button>
-</div>
-
-<div class="toast" id="toast">
-  <span id="toast-message">Added to your basket!</span>
-  <button onclick="showPage('basket')">View my basket</button>
-</div>
+<div class="toast" id="toast"></div>
 
 <script>
+/* PRODUCT INFORMATION */
+
 const readyPacks = {
-  grandma:{name:"Grandma's Sugar Bag",price:5.00,details:"Sweets, chocolates and more."},
-  smarty:{name:"The Smarty Pack",price:5.00,details:"For people preparing for exams."},
-  health:{name:"Health and Beauty Pack",price:6.50,details:"Hand sanitiser, hair ties and more."},
-  christmas:{name:"The Christmas Special",price:5.00,details:"A little piece of all our packs in one festive box. Available 20 November to 30 December 2026.",seasonal:true}
+  grandma: {
+    name:"Grandma's Sugar Bag",
+    price:5
+  },
+  smarty: {
+    name:"The Smarty Pack",
+    price:5
+  },
+  health: {
+    name:"Health and Beauty Pack",
+    price:6.50
+  },
+  christmas: {
+    name:"The Christmas Special",
+    price:5
+  }
 };
 
 const extraItems = {
   sweets:{name:"Extra sweets",price:0.50},
-  chocolate:{name:"Chocolate bar",price:1.00},
-  stationery:{name:"Cute stationery",price:1.00},
+  chocolate:{name:"Chocolate bar",price:1},
+  stationery:{name:"Cute stationery",price:1},
   hair:{name:"Hair accessories",price:0.50},
   selfcare:{name:"Self-care extra",price:0.50},
   surprise:{name:"Mini surprise treat",price:0.50}
 };
 
 const customItems = {
-  sanitiser:{name:"Hand sanitiser",price:1.00},
+  sanitiser:{name:"Hand sanitiser",price:1},
   hairties:{name:"Hair ties",price:0.50},
-  caprisun:{name:"Capri Sun",price:1.00},
-  minisweets:{name:"Mini sweet packet",price:0.50},
-  smallchoc:{name:"Small chocolate",price:0.50},
+  caprisun:{name:"Capri Sun",price:1},
+  sweets:{name:"Mini sweet packet",price:0.50},
+  chocolate:{name:"Small chocolate",price:0.50},
   pens:{name:"Pens",price:0.50},
-  notepad:{name:"Notepad",price:1.00}
+  notepad:{name:"Notepad",price:1}
 };
 
 let basket = [];
 let customQuantities = {};
 let toastTimer;
 
+
+/* HELPER FUNCTIONS */
+
 function money(amount) {
-  return "€"+Number(amount).toFixed(2);
+  return "€" + Number(amount).toFixed(2);
 }
 
 function escapeHTML(value) {
-  return String(value).replace(/[&<>"']/g,character => ({
-    "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"
-  })[character]);
+  return String(value).replace(/[&<>"']/g, function(character) {
+    return {
+      "&":"&amp;",
+      "<":"&lt;",
+      ">":"&gt;",
+      '"':"&quot;",
+      "'":"&#039;"
+    }[character];
+  });
 }
 
 function loadBasket() {
   try {
     const saved = localStorage.getItem("packShackBasket");
     basket = saved ? JSON.parse(saved) : [];
-    if(!Array.isArray(basket)) basket = [];
+
+    if (!Array.isArray(basket)) basket = [];
   } catch(error) {
     basket = [];
   }
@@ -936,418 +848,373 @@ function saveBasket() {
 }
 
 function updateBasketCount() {
-  const count = basket.reduce((total,item) => total+item.quantity,0);
+  const count = basket.reduce((total,item) => total + item.quantity,0);
   document.getElementById("basket-count").textContent = count;
 }
 
-function showPage(page) {
-  const valid = ["home","collection","custom","basket","checkout","about"];
-  if(!valid.includes(page)) page = "home";
+function basketTotal() {
+  return basket.reduce((total,item) => total + item.price * item.quantity,0);
+}
 
-  document.querySelectorAll(".page").forEach(section => {
-    section.classList.remove("active");
+
+/* PAGE NAVIGATION */
+
+function showPage(pageId,button) {
+  document.querySelectorAll(".page").forEach(page => {
+    page.classList.remove("active");
   });
 
-  document.getElementById(page).classList.add("active");
+  const page = document.getElementById(pageId);
+  if (!page) return;
 
-  document.querySelectorAll("nav button").forEach(button => {
-    button.classList.toggle("active",button.dataset.page===page);
+  page.classList.add("active");
+
+  document.querySelectorAll("nav button").forEach(navButton => {
+    navButton.classList.remove("active");
   });
 
-  if(page==="basket") renderBasket();
-  if(page==="checkout") {
+  if (button) {
+    button.classList.add("active");
+  } else {
+    const navButtons = document.querySelectorAll("nav button");
+    const pageOrder = ["home","collection","custom","basket","about"];
+    const index = pageOrder.indexOf(pageId);
+    if (index >= 0) navButtons[index].classList.add("active");
+  }
+
+  if (pageId === "basket") renderBasket();
+  if (pageId === "checkout") {
     renderCheckoutRecommendations();
     renderCheckoutSummary();
   }
 
-  hideToast();
-  window.scrollTo(0,0);
-  history.pushState(null,"","#"+page);
+  window.location.hash = pageId;
+  window.scrollTo({top:0,behavior:"smooth"});
 }
 
-function showPageWithoutHistory(page) {
-  const valid = ["home","collection","custom","basket","checkout","about"];
-  if(!valid.includes(page)) page = "home";
-
-  document.querySelectorAll(".page").forEach(section => {
-    section.classList.remove("active");
-  });
-  document.getElementById(page).classList.add("active");
-
-  document.querySelectorAll("nav button").forEach(button => {
-    button.classList.toggle("active",button.dataset.page===page);
-  });
-
-  if(page==="basket") renderBasket();
-  if(page==="checkout") {
-    renderCheckoutRecommendations();
-    renderCheckoutSummary();
-  }
-
-  hideToast();
-  window.scrollTo(0,0);
+function showPageWithoutHistory(pageId) {
+  showPage(pageId);
 }
 
-window.addEventListener("popstate",() => {
-  const page = window.location.hash.replace("#","") || "home";
-  showPageWithoutHistory(page);
+window.addEventListener("popstate",function() {
+  const pageId = window.location.hash.replace("#","") || "home";
+  showPageWithoutHistory(pageId);
 });
 
-function addToBasket(item) {
-  const existing = basket.find(entry =>
-    entry.id===item.id && entry.details===item.details
-  );
 
-  if(existing) existing.quantity+=1;
-  else basket.push({...item,quantity:1});
+/* BASKET FUNCTIONS */
+
+function addToBasket(name,price) {
+  const existing = basket.find(item => item.name === name);
+
+  if (existing) {
+    existing.quantity++;
+  } else {
+    basket.push({
+      name:name,
+      price:price,
+      quantity:1
+    });
+  }
 
   saveBasket();
-  showToast(item.name+" added to your basket!");
+  showToast(name + " added to your basket! 💗");
 }
 
 function isChristmasSpecialAvailable() {
   const today = new Date();
-  const current = new Date(today.getFullYear(),today.getMonth(),today.getDate());
   const start = new Date(2026,10,20);
-  const end = new Date(2026,11,30);
-  return current >= start && current <= end;
+  const end = new Date(2026,11,30,23,59,59);
+
+  today.setHours(0,0,0,0);
+
+  return today >= start && today <= end;
 }
 
 function updateChristmasAvailability() {
-  const button = document.getElementById("christmas-add-button");
+  const available = isChristmasSpecialAvailable();
   const status = document.getElementById("christmas-status");
-  if(!button || !status) return;
+  const button = document.getElementById("christmas-button");
 
-  const today = new Date();
-  const current = new Date(today.getFullYear(),today.getMonth(),today.getDate());
-  const start = new Date(2026,10,20);
-  const end = new Date(2026,11,30);
-
-  if(current < start) {
-    button.disabled = true;
-    button.textContent = "Available from 20 November";
-    status.textContent = "Coming 20 November 2026";
-  } else if(current > end) {
-    button.disabled = true;
-    button.textContent = "No longer available";
-    status.textContent = "Seasonal pack ended 30 December 2026";
-  } else {
+  if (available) {
+    status.textContent = "Available 20 November – 30 December";
     button.disabled = false;
     button.textContent = "Add to basket";
-    status.textContent = "Available until 30 December 2026";
+  } else {
+    status.textContent = "Available 20 November – 30 December 2026";
+    button.disabled = true;
+    button.textContent = "Currently unavailable";
   }
 }
 
 function addReadyPack(id) {
-  const pack = readyPacks[id];
-  if(!pack) return;
+  if (!readyPacks[id]) return;
 
-  if(id==="christmas" && !isChristmasSpecialAvailable()) {
-    alert("The Christmas Special is available from 20 November to 30 December 2026.");
+  if (id === "christmas" && !isChristmasSpecialAvailable()) {
+    showToast("The Christmas Special isn't available just yet! 🎄");
     return;
   }
 
-  addToBasket({
-    id:id,
-    name:pack.name,
-    price:pack.price,
-    details:pack.details,
-    type:"ready"
-  });
+  addToBasket(readyPacks[id].name,readyPacks[id].price);
 }
 
 function addExtra(id) {
-  const extra = extraItems[id];
-  if(!extra) return;
+  if (!extraItems[id]) return;
 
-  addToBasket({
-    id:"extra-"+id,
-    name:extra.name,
-    price:extra.price,
-    details:"Optional extra",
-    type:"extra"
-  });
-}
-
-function changeCustom(id,change) {
-  customQuantities[id]=Math.max(0,(customQuantities[id]||0)+change);
-  const display=document.getElementById("qty-"+id);
-  if(display) display.textContent=customQuantities[id];
-}
-
-function addCustomPack() {
-  const selected=Object.keys(customItems).filter(id =>
-    (customQuantities[id]||0)>0
-  );
-
-  const specialRequest=document.getElementById("custom-request").value.trim();
-
-  if(selected.length===0 && specialRequest==="") {
-    alert("Please choose an item or write what you'd like in your custom pack.");
-    return;
-  }
-
-  const details=[];
-
-  selected.forEach(id => {
-    details.push(customQuantities[id]+" x "+customItems[id].name);
-  });
-
-  if(specialRequest!=="") {
-    details.push("CUSTOM CUSTOMER REQUEST: "+specialRequest);
-  }
-
-  addToBasket({
-    id:"custom-"+Date.now(),
-    name:"Make Your Own Custom Pack",
-    price:null,
-    details:details.join("; "),
-    type:"custom"
-  });
-
-  customQuantities={};
-
-  Object.keys(customItems).forEach(id => {
-    const display=document.getElementById("qty-"+id);
-    if(display) display.textContent="0";
-  });
-
-  document.getElementById("custom-request").value="";
-}
-
-function showToast(message) {
-  const toast=document.getElementById("toast");
-  document.getElementById("toast-message").textContent=message;
-  toast.classList.add("show");
-  clearTimeout(toastTimer);
-  toastTimer=setTimeout(hideToast,4000);
-}
-
-function hideToast() {
-  document.getElementById("toast").classList.remove("show");
-}
-
-function renderBasket() {
-  const holder=document.getElementById("basket-content");
-
-  if(basket.length===0) {
-    holder.innerHTML=`
-      <div class="empty-basket">
-        <h2>Your basket is empty</h2>
-        <p>Have a look at our collection and find something you like.</p>
-        <button class="button" onclick="showPage('collection')">Explore our collection</button>
-      </div>`;
-    return;
-  }
-
-  let total=0;
-  let hasCustom=false;
-
-  const rows=basket.map((item,index) => {
-    const custom=item.type==="custom";
-    if(custom) hasCustom=true;
-    else total+=item.price*item.quantity;
-
-    return `
-      <div class="basket-line">
-        <div style="flex:1">
-          <h3>${escapeHTML(item.name)}</h3>
-          <p>${escapeHTML(item.details||"")}</p>
-          <p>${custom?"Price on request":money(item.price)+" each"}</p>
-          <div class="quantity-control">
-            <button onclick="changeBasketQuantity(${index},-1)">−</button>
-            <span>${item.quantity}</span>
-            <button onclick="changeBasketQuantity(${index},1)">+</button>
-          </div>
-          <button class="remove-button" onclick="removeBasketItem(${index})">Remove</button>
-        </div>
-        <div class="line-price">
-          ${custom?"Price to be confirmed":money(item.price*item.quantity)}
-        </div>
-      </div>`;
-  }).join("");
-
-  holder.innerHTML=`
-    ${rows}
-    <div class="basket-total">
-      <span>${hasCustom?"Ready-made items total":"Total"}</span>
-      <span>${money(total)}</span>
-    </div>
-    ${hasCustom?`<p class="basket-note">Custom pack prices are not included in this total. We'll check your selections and written requests, then contact you with the final price before confirming your order.</p>`:""}
-    <div class="button-row" style="justify-content:space-between">
-      <button class="button secondary" onclick="showPage('collection')">Continue shopping</button>
-      <button class="button" onclick="showPage('checkout')">Continue to checkout</button>
-    </div>`;
+  addToBasket(extraItems[id].name,extraItems[id].price);
 }
 
 function changeBasketQuantity(index,change) {
-  if(!basket[index]) return;
-  basket[index].quantity+=change;
-  if(basket[index].quantity<=0) basket.splice(index,1);
+  if (!basket[index]) return;
+
+  basket[index].quantity += change;
+
+  if (basket[index].quantity <= 0) {
+    basket.splice(index,1);
+  }
+
   saveBasket();
   renderBasket();
+  renderCheckoutSummary();
 }
 
 function removeBasketItem(index) {
   basket.splice(index,1);
   saveBasket();
   renderBasket();
-}
-
-function renderCheckoutRecommendations() {
-  const holder = document.getElementById("recommendation-grid");
-  if(!holder) return;
-
-  const suggestions = [
-    {id:"grandma",name:"Grandma's Sugar Bag",price:5.00,details:"Sweets, chocolates and more."},
-    {id:"smarty",name:"The Smarty Pack",price:5.00,details:"For people preparing for exams."},
-    {id:"health",name:"Health and Beauty Pack",price:6.50,details:"Hand sanitiser, hair ties and more."},
-    {id:"christmas",name:"The Christmas Special",price:5.00,details:"A festive mix of goodies from all our packs.",seasonal:true}
-  ];
-
-  const available = suggestions.filter(pack =>
-    !basket.some(item => item.id===pack.id) &&
-    (!pack.seasonal || isChristmasSpecialAvailable())
-  );
-
-  if(available.length===0) {
-    holder.innerHTML = "<p>You've already picked all our ready-made packs. Thank you!</p>";
-    return;
-  }
-
-  holder.innerHTML = available.map(pack => `
-    <article class="recommendation">
-      <strong>${escapeHTML(pack.name)}</strong>
-      <p>${escapeHTML(pack.details)}</p>
-      <p><b>${money(pack.price)}</b></p>
-      <button class="button secondary" type="button" onclick="addRecommendation('${pack.id}')">Add this pack</button>
-    </article>
-  `).join("");
-}
-
-function addRecommendation(id) {
-  addReadyPack(id);
-  renderCheckoutRecommendations();
   renderCheckoutSummary();
 }
 
-function renderCheckoutSummary() {
-  const holder=document.getElementById("checkout-summary");
+function renderBasket() {
+  const container = document.getElementById("basket-content");
 
-  if(basket.length===0) {
-    holder.innerHTML="<p>Your basket is empty. Please add something before checking out.</p>";
+  if (basket.length === 0) {
+    container.innerHTML = `
+      <div class="empty-message">
+        <h3>Your basket is looking a little empty! 💗</h3>
+        <p>Have a look at our collection and find something lovely.</p>
+        <button class="button" onclick="showPage('collection')">Browse our collection</button>
+      </div>`;
     return;
   }
 
-  let total=0;
-  let hasCustom=false;
+  let html = "";
 
-  const lines=basket.map(item => {
-    if(item.type==="custom") {
-      hasCustom=true;
-      return `<p>${item.quantity} x ${escapeHTML(item.name)} — Price on request</p><p>${escapeHTML(item.details)}</p>`;
-    }
+  basket.forEach((item,index) => {
+    html += `
+      <div class="basket-item">
+        <div>
+          <h3>${escapeHTML(item.name)}</h3>
+          <p>${money(item.price)} each</p>
+          <button class="remove-button" onclick="removeBasketItem(${index})">Remove</button>
+        </div>
 
-    total+=item.price*item.quantity;
-    return `<p>${item.quantity} x ${escapeHTML(item.name)} — ${money(item.price*item.quantity)}</p>`;
-  }).join("");
-
-  holder.innerHTML=`
-    <h3>Your order</h3>
-    ${lines}
-    <hr>
-    <p><strong>Ready-made items total: ${money(total)}</strong></p>
-    ${hasCustom?"<p>Custom pack price: To be confirmed after review.</p>":""}`;
-}
-
-document.getElementById("meetup").addEventListener("change",function() {
-  const isOther=this.value==="Other";
-  document.getElementById("other-meetup-group").classList.toggle("hidden",!isOther);
-  document.getElementById("other-meetup").required=isOther;
-});
-
-document.getElementById("gift").addEventListener("change",function() {
-  document.getElementById("gift-message-group").classList.toggle("hidden",!this.checked);
-});
-
-document.getElementById("checkout-form").addEventListener("submit",function(event) {
-  event.preventDefault();
-
-  if(basket.length===0) {
-    alert("Your basket is empty. Please add something before checking out.");
-    showPage("collection");
-    return;
-  }
-
-  const name=document.getElementById("customer-name").value.trim();
-  const email=document.getElementById("customer-email").value.trim();
-  const meetupChoice=document.getElementById("meetup").value;
-  const otherMeetup=document.getElementById("other-meetup").value.trim();
-
-  if(meetupChoice==="Other" && !otherMeetup) {
-    alert("Please tell us where you would prefer to meet.");
-    return;
-  }
-
-  const meetup=meetupChoice==="Other"?"Other: "+otherMeetup:meetupChoice;
-  const gift=document.getElementById("gift").checked;
-  const giftMessage=document.getElementById("gift-message").value.trim();
-  const offers=document.getElementById("offers").checked;
-
-  let total=0;
-  let hasCustom=false;
-
-  const orderLines=basket.map(item => {
-    if(item.type==="custom") {
-      hasCustom=true;
-      return `${item.quantity} x ${item.name}\n${item.details}\nPrice: To be confirmed after review`;
-    }
-
-    total+=item.price*item.quantity;
-    return `${item.quantity} x ${item.name} - ${money(item.price*item.quantity)}`;
+        <div style="text-align:right;">
+          <div class="quantity-controls">
+            <button onclick="changeBasketQuantity(${index},-1)">−</button>
+            <span class="quantity">${item.quantity}</span>
+            <button onclick="changeBasketQuantity(${index},1)">+</button>
+          </div>
+          <strong>${money(item.price * item.quantity)}</strong>
+        </div>
+      </div>`;
   });
 
-  const body=[
-    "Hello The Pack Shack,",
-    "",
-    "I'd like to place an order.",
-    "",
-    "CUSTOMER DETAILS",
-    "Name: "+name,
-    "Email: "+email,
-    "Preferred school meetup: "+meetup,
-    "",
-    "ORDER",
-    ...orderLines,
-    "",
-    "Ready-made items total: "+money(total),
-    hasCustom?"Custom pack price: To be confirmed after review.":"",
-    "",
-    "Gift order: "+(gift?"Yes":"No"),
-    gift&&giftMessage?"Gift message: "+giftMessage:"",
-    "Permission to receive updates about upcoming packs: "+(offers?"Yes":"No"),
-    "",
-    "I understand that my order is only confirmed once The Pack Shack replies.",
-    "",
-    "Thank you!"
-  ].filter(Boolean).join("\n");
+  html += `
+    <div class="summary-line summary-total">
+      <span>Total</span>
+      <span>${money(basketTotal())}</span>
+    </div>`;
 
-  const subject=encodeURIComponent("The Pack Shack Order - "+name);
-  const emailBody=encodeURIComponent(body);
+  container.innerHTML = html;
+}
 
-  window.location.href=
-    "mailto:PackShack00@outlook.com?subject="+subject+"&body="+emailBody;
+function goToCheckout() {
+  if (basket.length === 0) {
+    showToast("Your basket is empty! Add something first.");
+    return;
+  }
 
-  alert("Your email app should open with your order details. Please press Send. Your order is confirmed once we reply.");
+  showPage("checkout");
+}
+
+
+/* CUSTOM PACK BUILDER */
+
+function renderCustomItems() {
+  const container = document.getElementById("custom-items");
+
+  let html = "";
+
+  Object.keys(customItems).forEach(id => {
+    const item = customItems[id];
+    const quantity = customQuantities[id] || 0;
+
+    html += `
+      <div class="custom-item">
+        <div>
+          <strong>${escapeHTML(item.name)}</strong>
+          <div class="muted">${money(item.price)}</div>
+        </div>
+
+        <div class="quantity-controls">
+          <button onclick="changeCustom('${id}',-1)">−</button>
+          <span class="quantity">${quantity}</span>
+          <button onclick="changeCustom('${id}',1)">+</button>
+        </div>
+      </div>`;
+  });
+
+  container.innerHTML = html;
+}
+
+function changeCustom(id,change) {
+  customQuantities[id] = Math.max(0,(customQuantities[id] || 0) + change);
+  renderCustomItems();
+}
+
+function addCustomPack() {
+  const selected = Object.keys(customQuantities).filter(id => customQuantities[id] > 0);
+  const request = document.getElementById("custom-request").value.trim();
+
+  if (selected.length === 0 && !request) {
+    showToast("Please choose at least one item or write a request.");
+    return;
+  }
+
+  let total = 0;
+  let description = [];
+
+  selected.forEach(id => {
+    const item = customItems[id];
+    const quantity = customQuantities[id];
+
+    total += item.price * quantity;
+    description.push(quantity + " × " + item.name);
+  });
+
+  let name = "Custom Pack";
+
+  if (description.length > 0) {
+    name += " (" + description.join(", ") + ")";
+  }
+
+  if (request) {
+    name += " - Special request: " + request;
+  }
+
+  if (total > 0) {
+    addToBasket(name,total);
+  } else {
+    addToBasket(name,0);
+  }
+
+  customQuantities = {};
+  document.getElementById("custom-request").value = "";
+  renderCustomItems();
+}
+
+
+/* TOAST MESSAGE */
+
+function showToast(message) {
+  const toast = document.getElementById("toast");
+  toast.textContent = message;
+  toast.classList.add("show");
+
+  clearTimeout(toastTimer);
+
+  toastTimer = setTimeout(() => {
+    toast.classList.remove("show");
+  },2800);
+}
+
+
+/* CHECKOUT RECOMMENDATIONS */
+
+function renderCheckoutRecommendations() {
+  const container = document.getElementById("checkout-recommendations");
+
+  const recommendations = [
+    {name:"Extra sweets",price:0.50},
+    {name:"Chocolate bar",price:1},
+    {name:"Mini surprise treat",price:0.50}
+  ];
+
+  container.innerHTML = recommendations.map((item,index) => `
+    <div class="card">
+      <h3>${escapeHTML(item.name)}</h3>
+      <div class="price">${money(item.price)}</div>
+      <button class="button secondary" onclick="addRecommendation(${index})">Add to order</button>
+    </div>
+  `).join("");
+}
+
+function addRecommendation(index) {
+  const recommendations = [
+    {name:"Extra sweets",price:0.50},
+    {name:"Chocolate bar",price:1},
+    {name:"Mini surprise treat",price:0.50}
+  ];
+
+  const item = recommendations[index];
+  if (item) {
+    addToBasket(item.name,item.price);
+    renderCheckoutSummary();
+  }
+}
+
+function renderCheckoutSummary() {
+  const container = document.getElementById("checkout-summary");
+
+  if (basket.length === 0) {
+    container.innerHTML = "<p>Your basket is empty.</p>";
+    return;
+  }
+
+  let html = "";
+
+  basket.forEach(item => {
+    html += `
+      <div class="summary-line">
+        <span>${escapeHTML(item.name)} × ${item.quantity}</span>
+        <span>${money(item.price * item.quantity)}</span>
+      </div>`;
+  });
+
+  html += `
+    <div class="summary-line summary-total">
+      <span>Order total</span>
+      <span>${money(basketTotal())}</span>
+    </div>`;
+
+  container.innerHTML = html;
+}
+
+
+/* CHECKOUT FORM OPTIONS */
+
+document.getElementById("meetup").addEventListener("change",function() {
+  const container = document.getElementById("other-meetup-container");
+  const otherInput = document.getElementById("other-meetup");
+
+  container.style.display = this.value === "Other" ? "block" : "none";
+  otherInput.required = this.value === "Other";
 });
 
-/* SUGGEST A PACK: OPEN OUTLOOK WITH THE IDEA ALREADY WRITTEN */
+document.getElementById("is-gift").addEventListener("change",function() {
+  document.getElementById("gift-message-container").style.display =
+    this.checked ? "block" : "none";
+});
+
+
+/* SUGGEST A PACK */
+
 function sendPackSuggestion() {
   const suggestion = document.getElementById("pack-suggestion").value.trim();
 
-  if(!suggestion) {
+  if (!suggestion) {
     alert("Please write your pack idea first!");
-    document.getElementById("pack-suggestion").focus();
     return;
   }
 
@@ -1355,31 +1222,102 @@ function sendPackSuggestion() {
 
   const body = encodeURIComponent(
     "Hello The Pack Shack!\n\n" +
-    "I have an idea for a new pack:\n\n" +
+    "I'd like to suggest a new pack:\n\n" +
     suggestion +
     "\n\nThank you!"
   );
 
-  const outlookLink =
-    "https://outlook.live.com/mail/0/deeplink/compose" +
-    "?to=PackShack00%40outlook.com" +
-    "&subject=" + subject +
+  window.location.href =
+    "mailto:PackShack00@outlook.com?subject=" + subject +
     "&body=" + body;
-
-  window.open(outlookLink,"_blank");
 }
 
+
+/* SEND ORDER EMAIL */
+
+document.getElementById("checkout-form").addEventListener("submit",function(event) {
+  event.preventDefault();
+
+  if (basket.length === 0) {
+    showToast("Your basket is empty!");
+    return;
+  }
+
+  const name = document.getElementById("customer-name").value.trim();
+  const email = document.getElementById("customer-email").value.trim();
+  const meetup = document.getElementById("meetup").value;
+  const otherMeetup = document.getElementById("other-meetup").value.trim();
+  const isGift = document.getElementById("is-gift").checked;
+  const giftMessage = document.getElementById("gift-message").value.trim();
+  const wantsOffers = document.getElementById("offers").checked;
+
+  if (!name || !email || !meetup) {
+    alert("Please fill in all the required details.");
+    return;
+  }
+
+  if (meetup === "Other" && !otherMeetup) {
+    alert("Please tell us your preferred meetup location.");
+    return;
+  }
+
+  let orderDetails = "";
+
+  basket.forEach(item => {
+    orderDetails +=
+      item.name + " x " + item.quantity +
+      " — " + money(item.price * item.quantity) + "\n";
+  });
+
+  const total = money(basketTotal());
+
+  let body =
+    "Hello The Pack Shack!\n\n" +
+    "I'd like to place an order.\n\n" +
+    "CUSTOMER DETAILS\n" +
+    "Name: " + name + "\n" +
+    "Email: " + email + "\n" +
+    "Preferred meetup: " +
+    (meetup === "Other" ? otherMeetup : meetup) + "\n\n" +
+    "ORDER DETAILS\n" +
+    orderDetails + "\n" +
+    "TOTAL: " + total + "\n\n" +
+    "Gift order: " + (isGift ? "Yes" : "No") + "\n";
+
+  if (isGift && giftMessage) {
+    body += "Gift message: " + giftMessage + "\n";
+  }
+
+  body +=
+    "\nWants to hear about future offers: " +
+    (wantsOffers ? "Yes" : "No") +
+    "\n\nThank you!";
+
+  const subject = encodeURIComponent("New Pack Shack Order - " + name);
+
+  const mailto =
+    "mailto:PackShack00@outlook.com?subject=" +
+    subject +
+    "&body=" +
+    encodeURIComponent(body);
+
+  window.location.href = mailto;
+});
+
+
 /* START WEBSITE */
+
 loadBasket();
 updateBasketCount();
 updateChristmasAvailability();
+renderCustomItems();
 
-const initialPage=window.location.hash.replace("#","");
+const startingPage = window.location.hash.replace("#","");
 
-if(["home","collection","custom","basket","checkout","about"].includes(initialPage)) {
-  showPageWithoutHistory(initialPage);
+if (startingPage && document.getElementById(startingPage)) {
+  showPage(startingPage);
 } else {
-  showPageWithoutHistory("home");
+  showPage("home");
 }
 </script>
 
