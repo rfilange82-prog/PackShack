@@ -457,6 +457,61 @@ footer a { color:var(--ink); }
   .extras-grid { grid-template-columns:1fr; }
   .custom-item,.basket-line { align-items:flex-start; }
 }
+  /* SUGGEST A PACK BOX */
+.suggestion-box {
+  position: fixed;
+  right: 15px;
+  top: 45%;
+  width: 220px;
+  background: #fffaf3;
+  border: 2px solid #d8b98c;
+  border-radius: 14px;
+  padding: 15px;
+  z-index: 999;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.suggestion-box h3 {
+  margin: 0 0 8px;
+  color: #426344;
+  font-size: 17px;
+}
+
+.suggestion-box p {
+  font-size: 12px;
+  margin-bottom: 10px;
+}
+
+.suggestion-box textarea {
+  width: 100%;
+  height: 75px;
+  padding: 8px;
+  border: 1px solid #d8b98c;
+  border-radius: 7px;
+  resize: vertical;
+  box-sizing: border-box;
+}
+
+.suggestion-box button {
+  width: 100%;
+  margin-top: 8px;
+  padding: 9px;
+  background: #426344;
+  color: white;
+  border: none;
+  border-radius: 7px;
+  cursor: pointer;
+}
+
+@media(max-width:700px) {
+  .suggestion-box {
+    width: 165px;
+    right: 8px;
+    top: auto;
+    bottom: 12px;
+    padding: 10px;
+  }
+}
 </style>
 </head>
 
@@ -1298,6 +1353,34 @@ if(["home","collection","custom","basket","checkout","about"].includes(initialPa
   showPageWithoutHistory("home");
 }
 </script>
+<div class="suggestion-box">
+  <h3>💡 Suggest a Pack!</h3>
+  <p>Have an idea for a new pack? We'd love to hear it!</p>
 
+  <textarea id="pack-suggestion"
+    placeholder="Tell us your idea..."></textarea>
+
+  <button onclick="sendPackSuggestion()">
+    Send Suggestion ✨
+  </button>
+</div>
+
+<script>
+function sendPackSuggestion() {
+  const suggestion = document.getElementById('pack-suggestion').value.trim();
+
+  if (!suggestion) {
+    alert('Please write your pack idea first!');
+    return;
+  }
+
+  const subject = encodeURIComponent('New Pack Suggestion');
+  const body = encodeURIComponent(suggestion);
+
+  window.location.href =
+    'mailto:PackShack00@outlook.com?subject=' +
+    subject + '&body=' + body;
+}
+</script>
 </body>
 </html>
